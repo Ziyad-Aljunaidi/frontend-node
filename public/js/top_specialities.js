@@ -19,7 +19,7 @@ function appendDataToDiv(data) {
 
     let btn_div = document.createElement("div")
     let appointment_btn = document.createElement("a")
-    appointment_btn.href = "#"
+    appointment_btn.href = `/appointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
     appointment_btn.className = "btn btn-main-2 btn-icon btn-round-full"
     appointment_btn.innerHTML = "Make appointment <i class='icofont-simple-right ml-2'>"
 
@@ -36,7 +36,7 @@ function appendDataToDiv(data) {
     let doc_name_h5 = document.createElement("h5");
     let doc_info_p = document.createElement("p");
 
-    doc_name_h5.innerHTML = "Dr."+data[i].name
+    doc_name_h5.innerHTML = "Dr. "+data[i].name
     ul_parent.appendChild(doc_name_h5)
 
     doc_info_li1.innerHTML = "Speciality: "+data[i].category
@@ -65,14 +65,20 @@ function appendDataToDiv(data) {
 
 
     document.body.appendChild(parent_div)
+    
 
     }
+
+    
+    
 }
 
 
 //appendDataToDiv("haha")
 goToSpeciality(myParam).then((result) => {
     console.log(result)
+    document.querySelector('#loading').style.visibility = "hidden"
     appendDataToDiv(result)
+    
 
 })
