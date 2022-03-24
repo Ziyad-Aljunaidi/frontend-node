@@ -30,7 +30,6 @@
 
   <body id="top">
     <header>
-
       <nav class="navbar navbar-expand-lg navigation" id="navbar">
         <div class="container">
           <a class="navbar-brand" href="index.html">
@@ -135,13 +134,69 @@
                 ></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown02">
                   <li>
-                    <a class="dropdown-item" href="department.html"
-                      >Departments</a
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=cardiology"
+                      >Cardiology</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="department-single.html"
-                      >Department Single</a
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=internal medicine"
+                      >Internal Medicine</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=dermatology"
+                      >Dermatology</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/result?speciality=dentistry"
+                      >Dentistry</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=pediatrics"
+                      >Pediatrics</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=psychology"
+                      >Psychology</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/result?speciality=surgery"
+                      >Surgery</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=orthopedics"
+                      >Orthopedics</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=ophthalmology"
+                      >Ophthalmology</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result.html?speciality=neurology"
+                      >Neurology</a
                     >
                   </li>
                 </ul>
@@ -153,79 +208,99 @@
     </header>
 
     <div class="container d-flex justify-content-center mt-5">
-        
-        
+      <div style="width: 1080px; border-radius:15px;" class="d-flex justify-content-center gray-bg">
       <form class="w-50 p-3 rounded">
+        <h3 > Sign Up</h3>
+        <div class="form-row">
+          <div class="form-group col-md-6">
+            <label for="inputEmail4">First Name</label>
+            <input
+              type="text"
+              class="form-control rounded"
+              id="inputEmail4"
+              placeholder="Fisrt Name"
+              required
+            />
+          </div>
+          <div class="form-group col-md-6">
+            <label for="inputPassword4">Last Name</label>
+            <input
+              type="text"
+              class="form-control rounded"
+              id="inputPassword4"
+              placeholder="Last Name"
+              required
+            />
+          </div>
+        </div>
         <div class="form-row">
           <div class="form-group col-md-6">
             <label for="inputEmail4">Email</label>
-            <input type="email" class="form-control rounded" id="inputEmail4" placeholder="Email">
+            <input
+              type="email"
+              class="form-control rounded"
+              id="inputEmail4"
+              placeholder="Email"
+              required
+            />
           </div>
           <div class="form-group col-md-6">
             <label for="inputPassword4">Password</label>
-            <input type="password" class="form-control rounded" id="inputPassword4" placeholder="Password">
+            <input
+              type="password"
+              class="form-control rounded"
+              id="inputPassword4"
+              placeholder="Password"
+              required
+            />
           </div>
         </div>
         <div class="form-group">
-          <label for="inputAddress">Address</label>
-          <input type="text" class="form-control rounded" id="inputAddress" placeholder="1234 Main St">
+          <label for="inputAddress">Date Of Birth</label>
+          <input
+            type="date"
+            class="form-control rounded"
+            id="inputAddress"
+            placeholder="Date Of Birth"
+            required
+          />
         </div>
         <div class="form-group">
-          <label for="inputAddress2">Address 2</label>
-          <input type="text" class="form-control rounded" id="inputAddress2" placeholder="Apartment, studio, or floor">
+          <label for="inputAddress">Phone Number</label>
+          <input
+            type="number"
+            class="form-control rounded"
+            id="phoneNumber"
+            placeholder="Phone Number"
+            pattern="^01[0125][0-9]{8}$" required
+          />
         </div>
-        <div class="form-row">
-          <div class="form-group col-md-6">
-            <label for="inputCity">City</label>
-            <input type="text" class="form-control rounded" id="inputCity">
-          </div>
-          <div class="form-group col-md-4">
-            <label for="inputState">State</label>
-            <select id="inputState" class="form-control rounded">
-              <option selected>Choose...</option>
-              <option>...</option>
-            </select>
-          </div>
-          <div class="form-group col-md-2">
-            <label for="inputZip">Zip</label>
-            <input type="text" class="form-control rounded" id="inputZip">
-          </div>
-        </div>
-        <div class="form-group">
-          <div class="form-check">
-            <input class="form-check-input" type="checkbox" id="gridCheck">
-            <label class="form-check-label" for="gridCheck">
-              Check me out
-            </label>
-          </div>
-        </div>
-        <button type="submit" class="btn btn-primary">Sign in</button>
+        <button type="submit" style="background-color: rgb(225, 36, 84); color:white;" class="btn ">Sign Up</button>
       </form>
+      </div>
     </div>
-    
 
-       <!-- Main jQuery -->
 
-       <script src="plugins/jquery/jquery.js"></script>
-       <!-- Bootstrap 4.3.2 -->
-       <script src="plugins/bootstrap/js/popper.js"></script>
-       <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-       <script src="plugins/counterup/jquery.easing.js"></script>
-       <!-- Slick Slider -->
-       <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-       <!-- Counterup -->
-       <script src="plugins/counterup/jquery.waypoints.min.js"></script>
-   
-       <script src="plugins/shuffle/shuffle.min.js"></script>
-       <script src="plugins/counterup/jquery.counterup.min.js"></script>
-       <!-- Google Map -->
-       <script src="plugins/google-map/map.js"></script>
-       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
-   
-       <script src="js/script.js"></script>
-       <script src="js/contact.js"></script>
-       <script src="js/top_specialities.js"></script>
-   
-       
-     </body>
-   </html>
+    <!-- Main jQuery -->
+
+    <script src="plugins/jquery/jquery.js"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <script src="plugins/bootstrap/js/popper.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/counterup/jquery.easing.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+
+    <script src="plugins/shuffle/shuffle.min.js"></script>
+    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <!-- Google Map -->
+    <script src="plugins/google-map/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+    <script src="js/top_specialities.js"></script>
+  </body>
+</html>
