@@ -33,6 +33,7 @@ app.use("/result", express.static('./public/result.html'))
 app.use("/appointment", express.static('./public/appointment.html'))
 app.use("/confirmation", express.static('./public/confirmation.html'))
 
+app.use("/signin", express.static('./public/signin.html'))
 app.post("/appointment", (req,res) => {
     try {
         res.json([{
