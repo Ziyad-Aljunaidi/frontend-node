@@ -5,6 +5,7 @@ require('dotenv').config();
 const request = require('request');
 //const fetch = require("node-fetch");
 const fetch = require("node-fetch");
+const { application } = require('express');
 
 const
     express = require('express'),
@@ -68,3 +69,4 @@ app.get("/form", (req, res) => {
     let doc_id = queries.doc_id
     fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/verify?user_name=${user_name}&user_phone=${user_phone}&user_date=${user_date}&doc_id=${doc_id}`)
 })
+

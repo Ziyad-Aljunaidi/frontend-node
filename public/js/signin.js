@@ -22,11 +22,11 @@ async function verify(){
     let email = document.getElementById("email").value
     let password = document.getElementById("password").value
    
-    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/signin?email=${email}&password=${password}`)
-    let data = await response.json;
-    console.log(`https://us-central1-medica72-5933c.cloudfunctions.net/api/signin?email=${email}&password=${password}`)
-    
-    if(data.email == email & data.password==password){
+    let response = await fetch(`http://localhost:5000/medica72-5933c/us-central1/api/signin?email=${email}&password=${password}`)
+    let data = await response.json();
+    console.log(`http://localhost:5000/medica72-5933c/us-central1/api/signin?email=${email}&password=${password}`)
+    console.log(data[0].email)
+    if(data[0].email == email && data[0].password==password){
         setCookie("user_data", email, 30)
     }
     else{
