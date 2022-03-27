@@ -59,6 +59,6 @@ $("#myform").submit(function (e) {
   e.preventDefault();
   //sendConfirmation(datausr)
   check_cookie(getCookie("user_token"))
-   //window.location.href = '/confirmation';
+   window.location.href = '/confirmation';
   console.log("jaj")
 });
