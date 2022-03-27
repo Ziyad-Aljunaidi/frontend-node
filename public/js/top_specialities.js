@@ -19,7 +19,8 @@ function appendDataToDiv(data) {
 
     let btn_div = document.createElement("div")
     let appointment_btn = document.createElement("a")
-    appointment_btn.href = `/appointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
+    //appointment_btn.href = `/appointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
+    appointment_btn.href = `/newappointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
     appointment_btn.className = "btn btn-main-2 btn-icon btn-round-full"
     appointment_btn.innerHTML = "Make appointment <i class='icofont-simple-right ml-2'>"
 

@@ -116,10 +116,10 @@
           <div class="collapse navbar-collapse" id="navbarmain">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item active">
-                <a class="nav-link" href="index.html">Home</a>
+                <a class="nav-link" href="/">Home</a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="about.html">About</a>
+                <a class="nav-link" href="#">About</a>
               </li>
 
               <li class="nav-item dropdown">
@@ -207,9 +207,16 @@
       </nav>
     </header>
 
-    <div class="container d-flex justify-content-center mt-5">
+    
+    <div class="d-flex justify-content-center m-2" id="loading" style="visibility : hidden">
+      <div class="spinner-border"  role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
+    </div>
+
+    <div class="container d-flex justify-content-center">
       <div style="width: 1080px; border-radius:15px;" class="d-flex justify-content-center gray-bg">
-      <form class="w-50 p-3 rounded">
+      <form class="w-50 p-3 rounded m-2" id="myform">
         <h3 > Sign Up</h3>
         <div class="form-row">
           <div class="form-group col-md-6">
@@ -217,7 +224,7 @@
             <input
               type="text"
               class="form-control rounded"
-              id="inputEmail4"
+              id="first_name"
               placeholder="Fisrt Name"
               required
             />
@@ -227,7 +234,7 @@
             <input
               type="text"
               class="form-control rounded"
-              id="inputPassword4"
+              id="last_name"
               placeholder="Last Name"
               required
             />
@@ -239,7 +246,7 @@
             <input
               type="email"
               class="form-control rounded"
-              id="inputEmail4"
+              id="email"
               placeholder="Email"
               required
             />
@@ -249,7 +256,7 @@
             <input
               type="password"
               class="form-control rounded"
-              id="inputPassword4"
+              id="password"
               placeholder="Password"
               required
             />
@@ -260,7 +267,7 @@
           <input
             type="date"
             class="form-control rounded"
-            id="inputAddress"
+            id="date_of_birth"
             placeholder="Date Of Birth"
             required
           />
@@ -270,15 +277,17 @@
           <input
             type="number"
             class="form-control rounded"
-            id="phoneNumber"
+            id="phone_number"
             placeholder="Phone Number"
             pattern="^01[0125][0-9]{8}$" required
           />
         </div>
+        
         <button type="submit" style="background-color: rgb(225, 36, 84); color:white;" class="btn ">Sign Up</button>
       </form>
       </div>
     </div>
+
 
 
     <!-- Main jQuery -->
@@ -301,6 +310,7 @@
 
     <script src="js/script.js"></script>
     <script src="js/contact.js"></script>
-    <script src="js/top_specialities.js"></script>
+    <script src="js/signup.js"></script>
+    <script src="js/verify.js"></script>
   </body>
 </html>

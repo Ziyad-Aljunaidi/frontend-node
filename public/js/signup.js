@@ -18,28 +18,22 @@ function getCookie(name) {
     return null;
 }
 
-async function verify(){
+async function signUp(){
     let email = document.getElementById("email").value
     let password = document.getElementById("password").value
+    let first_name = document.getElementById("first_name").value
+    let last_name = document.getElementById("last_name").value
+    let date_of_birth = document.getElementById("date_of_birth").value
+    let phone_number = document.getElementById("phone_number").value
+
+    console.log(first_name, last_name, password,email, date_of_birth, phone_number)
    
-    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/signin?email=${email}&password=${password}`)
+    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/addUser?email=${email}&password=${password}&first_name=${first_name}&last_name=${last_name}&date_of_birth=${date_of_birth}&phone_number=${phone_number}`)
     let data = await response.json();
-    console.log(`https://us-central1-medica72-5933c.cloudfunctions.net/api/signin?email=${email}&password=${password}`)
+    window.alert("You successfully created an account, redirect to sign in page..")
+    window.location.href= '/signin'
+    //console.log(`https://us-central1-medica72-5933c.cloudfunctions.net/api/addUser?email=${email}&password=${password}`)
     //console.log(data[0].email)
-    try{
-        if(data[0].email == email && data[0].password==password){
-            setCookie("user_token", data[0].id, 30)
-            window.location.href = "/"
-        }
-        else{
-            window.alert("email or password ar incorrect!")
-            document.querySelector('#loading').style.visibility = "hidden"
-            document.getElementById("email").value = ""
-            document.getElementById("password").value = ""
-        }
-    }catch{
-        window.alert("email or password ar incorrect!")
-    }
 
 
 }
@@ -51,8 +45,8 @@ $("#myform").submit(function (e) {
     e.preventDefault();
     //setCookie("ser_email","zadj9965@gmail.com",30);
      //window.location.href = '/confirmation';
-     document.querySelector('#loading').style.visibility = "visible"
-     verify();
+    signUp();
+     
     console.log("cookie saved successfully!")
   });
   

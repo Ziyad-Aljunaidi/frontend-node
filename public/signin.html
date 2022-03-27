@@ -30,7 +30,6 @@
 
   <body id="top">
     <header>
-
       <nav class="navbar navbar-expand-lg navigation" id="navbar">
         <div class="container">
           <a class="navbar-brand" href="index.html">
@@ -135,13 +134,69 @@
                 ></a>
                 <ul class="dropdown-menu" aria-labelledby="dropdown02">
                   <li>
-                    <a class="dropdown-item" href="department.html"
-                      >Departments</a
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=cardiology"
+                      >Cardiology</a
                     >
                   </li>
                   <li>
-                    <a class="dropdown-item" href="department-single.html"
-                      >Department Single</a
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=internal medicine"
+                      >Internal Medicine</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=dermatology"
+                      >Dermatology</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/result?speciality=dentistry"
+                      >Dentistry</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=pediatrics"
+                      >Pediatrics</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=psychology"
+                      >Psychology</a
+                    >
+                  </li>
+                  <li>
+                    <a class="dropdown-item" href="/result?speciality=surgery"
+                      >Surgery</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=orthopedics"
+                      >Orthopedics</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result?speciality=ophthalmology"
+                      >Ophthalmology</a
+                    >
+                  </li>
+                  <li>
+                    <a
+                      class="dropdown-item"
+                      href="/result.html?speciality=neurology"
+                      >Neurology</a
                     >
                   </li>
                 </ul>
@@ -152,52 +207,89 @@
       </nav>
     </header>
 
-    <div class="container d-flex justify-content-center mt-5">
-        <div style="width: 700px; height: 500px; border-radius:15px;" class="d-flex justify-content-center gray-bg">
-        
-        <form class="w-50 align-self-center" id="myform">
-            <h3 > Sign In</h3>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input type="email" class="form-control rounded" id="email" aria-describedby="emailHelp" placeholder="Enter email">
-              <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-            </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input type="password" class="form-control rounded" id="password" placeholder="Password">
-            </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Remember me</label>
-            </div>
-            <button id="signinbtn" type="submit" style="background-color: rgb(225, 36, 84); color:white;"  class="btn">Sign in</button>
-          </form>
-        </div>
+    <div class="d-flex justify-content-center m-2" id="loading" style="visibility : hidden">
+      <div class="spinner-border"  role="status">
+        <span class="sr-only">Loading...</span>
+      </div>
     </div>
     
+    <div class="container d-flex justify-content-center">
+      <div
+        style="width: 700px; height: 500px; border-radius: 15px"
+        class="d-flex justify-content-center gray-bg"
+      >
+        <form class="w-50 align-self-center" id="myform">
+          <h3>Sign In</h3>
+          <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input
+              type="email"
+              class="form-control rounded"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email"
+            />
+            <small id="emailHelp" class="form-text text-muted"
+              >We'll never share your email with anyone else.</small
+            >
+          </div>
+          <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input
+              type="password"
+              class="form-control rounded"
+              id="password"
+              placeholder="Password"
+            />
+          </div>
+          <div class="form-group form-check">
+            <input
+              type="checkbox"
+              class="form-check-input"
+              id="exampleCheck1"
+            />
+            <label class="form-check-label" for="exampleCheck1"
+              >Remember me</label
+            >
+            <a href="/signup" >&nbsp;&nbsp;&nbsp;or sign up!</a>
 
-       <!-- Main jQuery -->
+          
+          </div>
+          
+          <button
+            id="signinbtn"
+            type="submit"
+            style="background-color: rgb(225, 36, 84); color: white"
+            class="btn"
+          >
+            Sign in
+          </button>
+          
+        </form>
+      </div>
+    </div>
 
-       <script src="plugins/jquery/jquery.js"></script>
-       <!-- Bootstrap 4.3.2 -->
-       <script src="plugins/bootstrap/js/popper.js"></script>
-       <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-       <script src="plugins/counterup/jquery.easing.js"></script>
-       <!-- Slick Slider -->
-       <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-       <!-- Counterup -->
-       <script src="plugins/counterup/jquery.waypoints.min.js"></script>
-   
-       <script src="plugins/shuffle/shuffle.min.js"></script>
-       <script src="plugins/counterup/jquery.counterup.min.js"></script>
-       <!-- Google Map -->
-       <script src="plugins/google-map/map.js"></script>
-       <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
-   
-       <script src="js/script.js"></script>
-       <script src="js/contact.js"></script>
-       <!--<script src="js/top_specialities.js"></script>-->
-       <script src="js/signin.js"></script>
-       
-     </body>
-   </html>
+    <!-- Main jQuery -->
+
+    <script src="plugins/jquery/jquery.js"></script>
+    <!-- Bootstrap 4.3.2 -->
+    <script src="plugins/bootstrap/js/popper.js"></script>
+    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="plugins/counterup/jquery.easing.js"></script>
+    <!-- Slick Slider -->
+    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+    <!-- Counterup -->
+    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+
+    <script src="plugins/shuffle/shuffle.min.js"></script>
+    <script src="plugins/counterup/jquery.counterup.min.js"></script>
+    <!-- Google Map -->
+    <script src="plugins/google-map/map.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+    <script src="js/script.js"></script>
+    <script src="js/contact.js"></script>
+    <!--<script src="js/top_specialities.js"></script>-->
+    <script src="js/signin.js"></script>
+  </body>
+</html>
