@@ -8,6 +8,18 @@ async function goToSpeciality(speciality) {
     return data
 }
 
+
+async function getRating(query_data){
+
+    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/getRatings?doc_id=${query_data}`)
+    
+    let data = await response.json();
+    //console.log(data.ratings)
+    
+    return data.ratings
+}
+
+
 function appendDataToDiv(data) {
 
     for(let i=0; i<=data.length; i++){
@@ -29,6 +41,11 @@ function appendDataToDiv(data) {
     doc_img.alt = "doc_avatar";
 
     let ul_parent = document.createElement("ul");
+
+    // Rating section
+    let doc_info_rating = document.createElement("li");
+    let rating_div = document.createElement("div");
+
     let doc_info_li1 = document.createElement("li");
     let doc_info_li2 = document.createElement("li");
     let doc_info_li3 = document.createElement("li");
@@ -37,24 +54,46 @@ function appendDataToDiv(data) {
     let doc_name_h5 = document.createElement("h5");
     let doc_info_p = document.createElement("p");
 
+    //console.log("haha" + data[i].id)
+    getRating(data[i].id).then((result) => {
+        let rating = 0;
+        //console.log(result.length)
+        for (let i = 0; i< result.length; i++){
+            rating += parseInt(result[i].user_rating)
+        }
+        rating = parseInt(rating/result.length)
+
+        for(let i = 1; i<= rating; i++){
+            let star_icon = "<i class='icofont-star' style='color: #ffb624;'></i>"
+            rating_div.innerHTML+=star_icon
+        }
+        for(let i =rating; i<5; i++){
+            let star_icon = "<i class='icofont-star'></i>"
+            rating_div.innerHTML+=star_icon
+        }
+        rating_div.innerHTML+=`(${result.length})`
+        doc_info_rating.appendChild(rating_div)
+        console.log(rating_div)
+        
+    })
+
     doc_name_h5.innerHTML = "Dr. "+data[i].name
     ul_parent.appendChild(doc_name_h5)
 
-    doc_info_li1.innerHTML = "Speciality: "+data[i].category
+    doc_info_li1.innerHTML = "<i class='icofont-doctor'>"+" Speciality: "+data[i].category
     ul_parent.appendChild(doc_info_p)
 
-    doc_info_li2.innerHTML = "City: " + data[i].city
+    doc_info_li2.innerHTML ="<i class='icofont-location-pin'></i>" + " Address: " + data[i].city+", "+ data[i].address
     ul_parent.appendChild(doc_info_p)
 
-    doc_info_li3.innerHTML = "Address: " + data[i].address
-
-    doc_info_li4.innerHTML = "Fee: " +data[i].fee
-    //doc_info_li5.innerHTML = data[0].qualification
 
 
+    doc_info_li4.innerHTML = "<i class='icofont-money'></i>" +" Fee: " +data[i].fee
+
+
+    ul_parent.appendChild(doc_info_rating)
     ul_parent.appendChild(doc_info_li1)
     ul_parent.appendChild(doc_info_li2)
-    ul_parent.appendChild(doc_info_li3)
     ul_parent.appendChild(doc_info_li4)
     ul_parent.appendChild(doc_info_li5)
 
