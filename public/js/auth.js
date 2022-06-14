@@ -17,9 +17,14 @@ function getCookie(name) {
 $(window).on("load", function(){
     if(getCookie("user_id") != null){
         document.getElementById("profileBtn").style.display = 'block'
+        document.getElementById("profile-dropdown").style.display = 'black'
         document.getElementById("loginBtn").style.display = 'none'
     }else{
         document.getElementById("profileBtn").style.display = 'none'
+        document.getElementById("profile-dropdown").style.display = 'none'
         document.getElementById("loginBtn").style.display = 'block'
+        
     }
+
+    document.getElementById("loading-screen").style.display = "none"
 })
