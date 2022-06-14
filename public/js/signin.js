@@ -28,7 +28,7 @@ async function verify(){
     //console.log(data[0].email)
     try{
         if(data[0].email == email && data[0].password==password){
-            setCookie("user_token", data[0].id, 30)
+            setCookie("user_id", data[0].id, 30)
             window.location.href = "/"
         }
         else{

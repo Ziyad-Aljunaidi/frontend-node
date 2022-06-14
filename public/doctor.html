@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="zxx">
+
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <meta name="description" content="Orbitor,business,company,agency,modern,bootstrap4,tech,software">
   <meta name="author" content="themefisher.com">
 
-  <title>Novena- Health & Care Medical template</title>
+  <title>Medica- Health & Care Medical</title>
 
   <!-- Favicon -->
   <link rel="shortcut icon" type="image/x-icon" href="/images/favicon.ico" />
@@ -18,14 +19,94 @@
   <link rel="stylesheet" href="plugins/slick-carousel/slick/slick.css">
   <link rel="stylesheet" href="plugins/slick-carousel/slick/slick-theme.css">
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
+  <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
+
+  <style>
+    h2 {
+      color: #223a66;
+    }
+
+    .personal-info {
+      display: block;
+    }
+
+    .edit-personal-info {
+      display: none;
+    }
+
+    .badge-pink {
+      background-color: #e12454;
+    }
+
+    .pagination {
+      display: flex;
+      justify-content: center;
+    }
+
+    .carousel-item>.pagination>input {
+      display: none;
+
+    }
+
+    .select-time {
+      display: none;
+    }
+
+    .time:hover {
+      background-color: #f5f5f5;
+    }
+
+    .doctor-reviews h5 {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+
+    #available-times{
+      display: block;
+      color: white;
+    }
+    .carousel-control-next,
+    .carousel-control-prev{
+      color: #223a66;
+      opacity: 1;
+    }
+
+    .carousel-control-next:hover,
+    .carousel-control-prev:hover{
+      color:#223a66;
+      opacity: 1;
+    }
+
+    .btn-light{
+      color: #223a66;
+    }
+    .btn-light:hover {
+      background-color: #cce5ff;
+      border-color: #b8daff;
+    }
+
+    #loading-appointments{
+      display: none;
+    }
+
+    #carouselExampleInterval{
+      display: none;
+    }
+
+  </style>
 
 </head>
 
 <body id="top">
 
-<header>
+  <header>
+    <!--
 	<div class="header-top-bar">
 		<div class="container">
 			<div class="row align-items-center">
@@ -46,416 +127,328 @@
 			</div>
 		</div>
 	</div>
-	<nav class="navbar navbar-expand-lg navigation" id="navbar">
-		<div class="container">
-		 	 <a class="navbar-brand" href="index.html">
-			  	<img src="images/logo.png" alt="" class="img-fluid">
-			  </a>
+	-->
+    <nav class="navbar navbar-expand-lg navigation" id="navbar">
+      <div class="container">
+        <a class="navbar-brand" href="index.html">
+          <!-- <img src="images/text-medica-logo.png" alt="" width="150 px" class="img-fluid "> -->
+          <svg width="50%" height="50%" viewBox="0 0 1600 670" version="1.1" xmlns="http://www.w3.org/2000/svg"
+            xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
+            style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+            <g transform="matrix(1.26291,0,0,1.26291,-30.8938,-64.1612)">
+              <g transform="matrix(1.30698,0.754585,-0.943232,1.63372,97.2064,-107.992)">
+                <path
+                  d="M200,108.75C200,107.251 199,105.865 197.377,105.115C195.753,104.366 193.753,104.366 192.13,105.115C179.143,111.114 153.691,122.869 143.935,127.376C141.5,128.5 140,130.579 140,132.828L140,251.25C140,252.749 141,254.135 142.623,254.885C144.247,255.634 146.247,255.634 147.87,254.885C160.857,248.886 186.309,237.131 196.065,232.624C198.5,231.5 200,229.421 200,227.172L200,108.75Z"
+                  style="fill:rgb(225,36,84);" />
+              </g>
+              <g transform="matrix(1.30698,0.754585,-0.943232,1.63372,263.305,-107.992)">
+                <path
+                  d="M200,108.75C200,107.251 199,105.865 197.377,105.115C195.753,104.366 193.753,104.366 192.13,105.115C179.143,111.114 153.691,122.869 143.935,127.376C141.5,128.5 140,130.579 140,132.828L140,251.25C140,252.749 141,254.135 142.623,254.885C144.247,255.634 146.247,255.634 147.87,254.885C160.857,248.886 186.309,237.131 196.065,232.624C198.5,231.5 200,229.421 200,227.172L200,108.75Z"
+                  style="fill:rgb(225,36,84);" />
+              </g>
+              <g transform="matrix(1.46548,0,0,1.46548,-51.0022,30.1783)">
+                <circle cx="356.242" cy="235.108" r="30.894" style="fill:rgb(225,36,84);" />
+              </g>
+              <g transform="matrix(1,0,0,1,-11.5051,20.2889)">
+                <path
+                  d="M702.394,337.929L586.417,337.929C588.092,348.156 592.567,356.289 599.84,362.328C607.113,368.367 616.392,371.387 627.677,371.387C641.166,371.387 652.759,366.67 662.457,357.237L692.873,371.519C685.291,382.275 676.21,390.231 665.631,395.389C655.051,400.546 642.488,403.125 627.941,403.125C605.372,403.125 586.99,396.006 572.796,381.768C558.602,367.53 551.505,349.699 551.505,328.276C551.505,306.323 558.58,288.096 572.73,273.593C586.88,259.091 604.623,251.839 625.958,251.839C648.615,251.839 667.041,259.091 681.235,273.593C695.429,288.096 702.526,307.249 702.526,331.053L702.394,337.929ZM666.292,309.497C663.907,301.474 659.205,294.95 652.184,289.925C645.164,284.9 637.017,282.387 627.743,282.387C617.676,282.387 608.845,285.208 601.251,290.851C596.482,294.377 592.066,300.593 588.004,309.497L666.292,309.497Z"
+                  style="fill:rgb(34,58,102);fill-rule:nonzero;" />
+                <path
+                  d="M837.811,200L873.913,200L873.913,399.422L837.811,399.422L837.811,384.214C830.766,390.915 823.699,395.741 816.611,398.695C809.522,401.648 801.839,403.125 793.561,403.125C774.981,403.125 758.91,395.918 745.349,381.503C731.788,367.089 725.008,349.17 725.008,327.747C725.008,305.53 731.568,287.324 744.689,273.13C757.81,258.936 773.749,251.839 792.505,251.839C801.134,251.839 809.235,253.47 816.808,256.732C824.381,259.994 831.382,264.887 837.811,271.411L837.811,200ZM799.859,285.164C788.7,285.164 779.43,289.11 772.049,297C764.668,304.891 760.978,315.007 760.978,327.35C760.978,339.781 764.734,350.007 772.246,358.03C779.759,366.053 789.006,370.064 799.989,370.064C811.325,370.064 820.727,366.119 828.195,358.229C835.664,350.338 839.398,340.001 839.398,327.218C839.398,314.699 835.664,304.56 828.195,296.802C820.727,289.044 811.282,285.164 799.859,285.164Z"
+                  style="fill:rgb(34,58,102);fill-rule:nonzero;" />
+                <path
+                  d="M924.496,196.297C930.826,196.297 936.254,198.589 940.782,203.174C945.309,207.758 947.572,213.312 947.572,219.836C947.572,226.272 945.331,231.76 940.848,236.301C936.365,240.841 931.002,243.111 924.761,243.111C918.343,243.111 912.87,240.797 908.343,236.168C903.816,231.54 901.552,225.92 901.552,219.307C901.552,212.96 903.794,207.538 908.277,203.042C912.76,198.545 918.166,196.297 924.496,196.297ZM906.445,255.542L942.547,255.542L942.547,399.422L906.445,399.422L906.445,255.542Z"
+                  style="fill:rgb(34,58,102);fill-rule:nonzero;" />
+                <path
+                  d="M1116.18,284.635L1086.13,301.166C1080.48,295.259 1074.89,291.159 1069.38,288.867C1063.86,286.575 1057.4,285.429 1049.98,285.429C1036.48,285.429 1025.55,289.456 1017.21,297.51C1008.87,305.565 1004.7,315.885 1004.7,328.472C1004.7,340.708 1008.72,350.7 1016.75,358.446C1024.78,366.191 1035.33,370.064 1048.39,370.064C1064.55,370.064 1077.13,364.554 1086.13,353.534L1114.6,373.025C1099.17,393.092 1077.39,403.125 1049.27,403.125C1023.97,403.125 1004.15,395.631 989.824,380.644C975.498,365.656 968.335,348.112 968.335,328.011C968.335,314.081 971.817,301.254 978.782,289.528C985.747,277.803 995.466,268.59 1007.94,261.89C1020.42,255.189 1034.37,251.839 1049.8,251.839C1064.08,251.839 1076.91,254.682 1088.28,260.369C1099.65,266.055 1108.95,274.144 1116.18,284.635Z"
+                  style="fill:rgb(34,58,102);fill-rule:nonzero;" />
+                <path
+                  d="M1254.9,255.542L1291.01,255.542L1291.01,399.422L1254.9,399.422L1254.9,384.214C1247.86,390.915 1240.79,395.741 1233.7,398.695C1226.62,401.648 1218.93,403.125 1210.65,403.125C1192.08,403.125 1176,395.918 1162.44,381.503C1148.88,367.089 1142.1,349.17 1142.1,327.747C1142.1,305.53 1148.66,287.324 1161.78,273.13C1174.9,258.936 1190.84,251.839 1209.6,251.839C1218.23,251.839 1226.33,253.47 1233.9,256.732C1241.48,259.994 1248.48,264.887 1254.9,271.411L1254.9,255.542ZM1216.95,285.164C1205.79,285.164 1196.52,289.11 1189.14,297C1181.76,304.891 1178.07,315.007 1178.07,327.35C1178.07,339.781 1181.83,350.007 1189.34,358.03C1196.85,366.053 1206.1,370.064 1217.08,370.064C1228.42,370.064 1237.82,366.119 1245.29,358.229C1252.76,350.338 1256.49,340.001 1256.49,327.218C1256.49,314.699 1252.76,304.56 1245.29,296.802C1237.82,289.044 1228.38,285.164 1216.95,285.164Z"
+                  style="fill:rgb(34,58,102);fill-rule:nonzero;" />
+              </g>
+            </g>
+          </svg>
+        </a>
 
-		  	<button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain" aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
-			<span class="icofont-navigation-menu"></span>
-		  </button>
-	  
-		  <div class="collapse navbar-collapse" id="navbarmain">
-			<ul class="navbar-nav ml-auto">
-			  <li class="nav-item active">
-				<a class="nav-link" href="index.html">Home</a>
-			  </li>
-			   <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
-			    <li class="nav-item"><a class="nav-link" href="service.html">Services</a></li>
+        <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarmain"
+          aria-controls="navbarmain" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="icofont-navigation-menu"></span>
+        </button>
 
-			    <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown02">
-						<li><a class="dropdown-item" href="department.html">Departments</a></li>
-						<li><a class="dropdown-item" href="department-single.html">Department Single</a></li>
-					</ul>
-			  	</li>
+        <div class="collapse navbar-collapse" id="navbarmain">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="index.html">Home</a>
+            </li>
+            <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="department.html" id="dropdown02" data-toggle="dropdown"
+                aria-haspopup="true" aria-expanded="false">Department <i class="icofont-thin-down"></i></a>
+              <ul class="dropdown-menu" aria-labelledby="dropdown02">
+                <li><a class="dropdown-item" href="/result?speciality=cardiology">Cardiology</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=internal medicine">Internal
+                    Medicine</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=dermatology">Dermatology</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=dentistry">Dentistry</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=pediatrics">Pediatrics</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=psychology">Psychology</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=surgery">Surgery</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=orthopedics">Orthopedics</a></li>
+                <li><a class="dropdown-item" href="/result?speciality=ophthalmology">Ophthalmology</a>
+                </li>
+                <li><a class="dropdown-item" href="/result.html?speciality=neurology">Neurology</a></li>
 
-			  	<li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="doctor.html" id="dropdown03" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Doctors <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown03">
-						<li><a class="dropdown-item" href="doctor.html">Doctors</a></li>
-						<li><a class="dropdown-item" href="doctor-single.html">Doctor Single</a></li>
-						<li><a class="dropdown-item" href="appoinment.html">Appoinment</a></li>
-					</ul>
-			  	</li>
-
-			   <li class="nav-item dropdown">
-					<a class="nav-link dropdown-toggle" href="blog-sidebar.html" id="dropdown05" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Blog <i class="icofont-thin-down"></i></a>
-					<ul class="dropdown-menu" aria-labelledby="dropdown05">
-						<li><a class="dropdown-item" href="blog-sidebar.html">Blog with Sidebar</a></li>
-
-						<li><a class="dropdown-item" href="blog-single.html">Blog Single</a></li>
-					</ul>
-			  	</li>
-			   <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
-			</ul>
-		  </div>
-		</div>
-	</nav>
-</header>
-	
-
-
-<section class="page-title bg-1">
-  <div class="overlay"></div>
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <div class="block text-center">
-          <span class="text-white">All Doctors</span>
-          <h1 class="text-capitalize mb-5 text-lg">Specalized doctors</h1>
-
-          <!-- <ul class="list-inline breadcumb-nav">
-            <li class="list-inline-item"><a href="index.html" class="text-white">Home</a></li>
-            <li class="list-inline-item"><span class="text-white">/</span></li>
-            <li class="list-inline-item"><a href="#" class="text-white-50">All Doctors</a></li>
-          </ul> -->
+              </ul>
+            </li>
+          </ul>
         </div>
       </div>
-    </div>
-  </div>
-</section>
+    </nav>
+  </header>
 
 
-<!-- portfolio -->
-<section class="section doctors">
-  <div class="container">
-  	  <div class="row justify-content-center">
-             <div class="col-lg-6 text-center">
-                <div class="section-title">
-                    <h2>Doctors</h2>
-                    <div class="divider mx-auto my-4"></div>
-                    <p>We provide a wide range of creative services adipisicing elit. Autem maxime rem modi eaque, voluptate. Beatae officiis neque </p>
-                </div>
+
+  <div class="user_profile">
+    <div class="container" style="margin-top:40px">
+      <div class="card mb-12">
+        <div class="row no-gutters">
+          <div class="col-md-4">
+            <img src="images/user_avatar.png" class="card-img" alt="..." style="width: 60%; margin: 30px; ">
+          </div>
+          <div class="col-md-8" style="margin-top: 30px;">
+            <div class="card-body ">
+              <h2 class="card-title" id="doc-name">Dr.Magdy Abdelaziz</h2>
+              <div>
+                <i class="icofont-star" style="color: #ffb624;"></i>
+                <i class="icofont-star" style="color: #ffb624;"></i>
+                <i class="icofont-star" style="color: #ffb624;"></i>
+                <i class="icofont-star" style="color: #ffb624;"></i>
+                <i class="icofont-star"></i>
+              </div>
+
+              <h4>Speciality</h4>
+              <p class="card-text">Dermatology</p>
+              <h5>Qualification</h5>
+              <p class="card-text">consultant of dermatology, venereology, andrology, infertility,
+                dermatology, laser treatment, mesotherapy, erectile dysfunction and premature
+                ejaculation</p>
             </div>
+
+
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <div class="container card p-4" style="margin-top: 40px;">
+        <h5>Clinic's Availibilty</h5>
+        <div class="container" style="margin-top:40px ;">
+          <h6 style="margin-top: 2px; margin-bottom:40px">Clinic Address:<small> cairo, 9 sharea el galaa amam noqtet el
+              horaya</small></h6>
+
+          <div class="row" >
+            
+            <div class="col-md-4">
+              
+              <input type="text" name="start-date" class="form-control datepicker-input" id="start-date" placeholder="Pick a date">
+              
+            </div>
+            <div>
+            <button type="button" class="btn btn-primary" id="get-appointments">Get appointments</button>
+          </div>
+            <div class="alert alert-primary col-md-12 mt-2 " role="alert" id="pick-date">
+              Please pick a date to display available appointments
+            </div>
+            <div class="d-flex justify-content-center col-md-12" >
+              <div class="spinner-border text-primary" id="loading-appointments"   role="status">
+                <span class="sr-only">Loading...</span>
+              </div>
+            </div>
+          </div>
+
+          
+
+          <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel" style="margin-top:20px ;" data-interval="false">
+            <div class="carousel-inner" id="inner">
+              <!--
+              <div class="carousel-item active" data-interval="10000">
+                <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light carousel-control-prev" href="#carouselExampleInterval"  data-slide="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-light" value="430">5:45 pm</button>
+                  <button type="button" class="btn btn-light">4:30 pm</button>
+                  <button type="button" class="btn btn-light">10:00 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+    
+                  <button type="button" class="btn btn-light carousel-control-next"  href="#carouselExampleInterval"data-slide="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              
+              <div class="carousel-item" data-interval="2000">
+                <div class="btn-group d-flex justify-content-center" role="group" aria-label="Basic example" id="carousel-group">
+                  <button type="button" class="btn btn-light carousel-control-prev"  href="#carouselExampleInterval" data-slide="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-light" value="430">5:45 pm</button>
+                  <button type="button" class="btn btn-light">4:30 pm</button>
+                  <button type="button" class="btn btn-light">10:00 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+
+                  <button type="button" class="btn btn-light carousel-control-next"  href="#carouselExampleInterval"  data-slide="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+              <div class="carousel-item">
+                <div class="btn-group d-flex justify-content-center " role="group" aria-label="Basic example">
+                  <button type="button" class="btn btn-light carousel-control-prev" href="#carouselExampleInterval" data-slide="prev"><i class="fa fa-chevron-circle-left" aria-hidden="true"></i></button>
+                  <button type="button" class="btn btn-light" value="430">5:45 pm</button>
+                  <button type="button" class="btn btn-light">4:30 pm</button>
+                  <button type="button" class="btn btn-light">10:00 pm</button>
+                  <button type="button" class="btn btn-light">9:45 pm</button>
+                  <button type="button" class="btn btn-light" disabled>-s-</button>
+                  <button type="button" class="btn btn-light">--</button>
+                  <button type="button" class="btn btn-light">--</button>
+                  <button type="button" class="btn btn-light">--</button>
+                  <button type="button" class="btn btn-light">--</button>
+                  <button type="button" class="btn btn-light">--</button>
+
+
+                  <button type="button" class="btn btn-light carousel-control-next"  href="#carouselExampleInterval" data-slide="next"><i class="fa fa-chevron-circle-right" aria-hidden="true"></i></button>
+                </div>
+              </div>
+            -->
+            </div>
+
+          </div>
+        
+        </div>
+      </div>
+    </div>
+
+    <div class="container doctor-reviews card p-4" style="margin-top: 40px; ">
+      <h4>Patient's Reviews</h4>
+      <div>
+        <div class="card mb-12" style="margin:30px">
+          <div class="row no-gutters">
+
+            <div class="col-md-1" style="margin: 30px; ">
+              <img src="images/user_avatar.png" class="card-img" alt="..." style="width:100%;">
+            </div>
+            <div class="col-md-4 float-left">
+              <h5 class="align-middle">Ziyad Gehad</h5>
+            </div>
+            <div class="col-md-10" style="margin-top:-30px !important;">
+              <div class="card-body">
+                <div>
+                  4/5
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Date written: 23/4/2022</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-12" style="margin:30px">
+          <div class="row no-gutters">
+
+            <div class="col-md-1" style="margin: 30px; ">
+              <img src="images/user_avatar.png" class="card-img" alt="..." style="width:100%;">
+            </div>
+            <div class="col-md-4 float-left">
+              <h5 class="align-middle">Ziyad Magdy</h5>
+            </div>
+            <div class="col-md-10" style="margin-top:-30px !important;">
+              <div class="card-body">
+                <div>
+                  4/5
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star-o" aria-hidden="true"></i>
+                </div>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Date written: 23/4/2022</small></p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card mb-12" style="margin:30px">
+          <div class="row no-gutters">
+
+            <div class="col-md-1" style="margin: 30px; ">
+              <img src="images/user_avatar.png" class="card-img" alt="..." style="width:100%;">
+            </div>
+            <div class="col-md-4 float-left">
+              <h5 class="align-middle">Ziyad Ghazal</h5>
+            </div>
+            <div class="col-md-10" style="margin-top:-30px !important;">
+              <div class="card-body">
+                <div>
+                  5/5
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                  <i class="fa fa-star" aria-hidden="true"></i>
+                </div>
+                <p class="card-text">This is a wider card with supporting text below as a natural lead-in to
+                  additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Date written: 23/4/2022</small></p>
+              </div>
+            </div>
+          </div>
         </div>
 
-      <div class="col-12 text-center  mb-5">
-	        <div class="btn-group btn-group-toggle " data-toggle="buttons">
-	          <label class="btn active ">
-	            <input type="radio" name="shuffle-filter" value="all" checked="checked" />All Department
-	          </label>
-	          <label class="btn ">
-	            <input type="radio" name="shuffle-filter" value="cat1" />Cardiology
-	          </label>
-	          <label class="btn">
-	            <input type="radio" name="shuffle-filter" value="cat2" />Dental
-	          </label>
-	          <label class="btn">
-	            <input type="radio" name="shuffle-filter" value="cat3" />Neurology
-	          </label>
-	          <label class="btn">
-	            <input type="radio" name="shuffle-filter" value="cat4" />Medicine
-	          </label>
-	           <label class="btn">
-	            <input type="radio" name="shuffle-filter" value="cat5" />Pediatric
-	          </label>
-	          <label class="btn">
-	            <input type="radio" name="shuffle-filter" value="cat6" />Traumatology
-	          </label>
-	        </div>
       </div>
 
-    <div class="row shuffle-wrapper portfolio-gallery">
-      	<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat1&quot;,&quot;cat2&quot;]">
-	      	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-	               <div class="doctor-img">
-	               		<img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
-	               </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
-                	<p>Cardiology</p>
-                </div> 
-	      	</div>
-      	</div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat2&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/2.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Harrision Samuel</a></h4>
-                	<p>Radiology</p>
-                </div> 
-	      	</div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat3&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Alexandar James</a></h4>
-                	<p>Dental</p>
-                </div> 
-	      	</div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat3&quot;,&quot;cat4&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Edward john</a></h4>
-                	<p>Pediatry</p>
-                </div> 
-	      	</div>
-      </div>
-
-      	<div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
-                	<p>Neurology</p>
-                </div> 
-	      	</div>
-      	</div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat6&quot;]">
-       		 <div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Henry samuel</a></h4>
-                	<p>Palmology</p>
-                </div> 
-	      	</div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat4&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/1.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas alexandar</a></h4>
-                	<p>Cardiology</p>
-                </div> 
-	        </div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;,&quot;cat6&quot;,&quot;cat1&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
-		             </div>
-	             </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">HarissonThomas </a></h4>
-                	<p>Traumatology</p>
-                </div> 
-	      	</div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item illustration" data-groups="[&quot;cat2&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Jonas Thomson</a></h4>
-                	<p>Cardiology</p>
-                </div> 
-	      	</div>
-        </div>
-
-         <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item" data-groups="[&quot;cat5&quot;,&quot;cat6&quot;,&quot;cat1&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/3.jpg" alt="doctor-image" class="img-fluid w-100">
-		            </div>
-	            </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Henry Forth</a></h4>
-                	<p>hematology</p>
-                </div> 
-	      	</div>
-      </div>
-
-      <div class="col-lg-3 col-sm-6 col-md-6 mb-4 shuffle-item illustration" data-groups="[&quot;cat2&quot;]">
-        	<div class="position-relative doctor-inner-box">
-		        <div class="doctor-profile">
-		        	<div class="doctor-img">
-		               <img src="images/team/4.jpg" alt="doctor-image" class="img-fluid w-100">
-		             </div>
-	             </div>
-                <div class="content mt-3">
-                	<h4 class="mb-0"><a href="doctor-single.html">Thomas Henry</a></h4>
-                	<p>Dental</p>
-                </div> 
-	      	</div>
-        </div>
     </div>
   </div>
-</section>
-<!-- /portfolio -->
-<section class="section cta-page">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-7">
-				<div class="cta-content">
-					<div class="divider mb-4"></div>
-					<h2 class="mb-5 text-lg">We are pleased to offer you the <span class="title-color">chance to have the healthy</span></h2>
-					<a href="appoinment.html" class="btn btn-main-2 btn-round-full">Get appoinment<i class="icofont-simple-right  ml-2"></i></a>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
 
-<!-- footer Start -->
-<footer class="footer section gray-bg">
-	<div class="container">
-		<div class="row">
-			<div class="col-lg-4 mr-auto col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<div class="logo mb-4">
-						<img src="images/logo.png" alt="" class="img-fluid">
-					</div>
-					<p>Tempora dolorem voluptatum nam vero assumenda voluptate, facilis ad eos obcaecati tenetur veritatis eveniet distinctio possimus.</p>
 
-					<ul class="list-inline footer-socials mt-4">
-						<li class="list-inline-item"><a href="https://www.facebook.com/themefisher"><i class="icofont-facebook"></i></a></li>
-						<li class="list-inline-item"><a href="https://twitter.com/themefisher"><i class="icofont-twitter"></i></a></li>
-						<li class="list-inline-item"><a href="https://www.pinterest.com/themefisher/"><i class="icofont-linkedin"></i></a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Department</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Surgery </a></li>
-						<li><a href="#">Wome's Health</a></li>
-						<li><a href="#">Radiology</a></li>
-						<li><a href="#">Cardioc</a></li>
-						<li><a href="#">Medicine</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-2 col-md-6 col-sm-6">
-				<div class="widget mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Support</h4>
-					<div class="divider mb-4"></div>
-
-					<ul class="list-unstyled footer-menu lh-35">
-						<li><a href="#">Terms & Conditions</a></li>
-						<li><a href="#">Privacy Policy</a></li>
-						<li><a href="#">Company Support </a></li>
-						<li><a href="#">FAQuestions</a></li>
-						<li><a href="#">Company Licence</a></li>
-					</ul>
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 col-sm-6">
-				<div class="widget widget-contact mb-5 mb-lg-0">
-					<h4 class="text-capitalize mb-3">Get in Touch</h4>
-					<div class="divider mb-4"></div>
-
-					<div class="footer-contact-block mb-4">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-email mr-3"></i>
-							<span class="h6 mb-0">Support Available for 24/7</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">Support@email.com</a></h4>
-					</div>
-
-					<div class="footer-contact-block">
-						<div class="icon d-flex align-items-center">
-							<i class="icofont-support mr-3"></i>
-							<span class="h6 mb-0">Mon to Fri : 08:30 - 18:00</span>
-						</div>
-						<h4 class="mt-2"><a href="tel:+23-345-67890">+23-456-6588</a></h4>
-					</div>
-				</div>
-			</div>
-		</div>
-		
-		<div class="footer-btm py-4 mt-5">
-			<div class="row align-items-center justify-content-between">
-				<div class="col-lg-6">
-					<div class="copyright">
-						&copy; Copyright Reserved to <span class="text-color">Novena</span> by <a href="https://themefisher.com/" target="_blank">Themefisher</a>
-					</div>
-				</div>
-				<div class="col-lg-6">
-					<div class="subscribe-form text-lg-right mt-5 mt-lg-0">
-						<form action="#" class="subscribe">
-							<input type="text" class="form-control" placeholder="Your Email address">
-							<a href="#" class="btn btn-main-2 btn-round-full">Subscribe</a>
-						</form>
-					</div>
-				</div>
-			</div>
-
-			<div class="row">
-				<div class="col-lg-4">
-					<a class="backtop js-scroll-trigger" href="#top">
-						<i class="icofont-long-arrow-up"></i>
-					</a>
-				</div>
-			</div>
-		</div>
-	</div>
-</footer>
-   
-
-    <!-- 
+  <!-- 
     Essential Scripts
     =====================================-->
 
-    
-    <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.js"></script>
-    <!-- Bootstrap 4.3.2 -->
-    <script src="plugins/bootstrap/js/popper.js"></script>
-    <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
-    <script src="plugins/counterup/jquery.easing.js"></script>
-    <!-- Slick Slider -->
-    <script src="plugins/slick-carousel/slick/slick.min.js"></script>
-    <!-- Counterup -->
-    <script src="plugins/counterup/jquery.waypoints.min.js"></script>
-    
-    <script src="plugins/shuffle/shuffle.min.js"></script>
-    <script src="plugins/counterup/jquery.counterup.min.js"></script>
-    <!-- Google Map -->
-    <script src="plugins/google-map/map.js"></script>
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>    
-    
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
 
-  </body>
-  </html>
+  <!-- Main jQuery -->
+  <script src="plugins/jquery/jquery.js"></script>
+  <!-- Bootstrap 4.3.2 -->
+  <script src="plugins/bootstrap/js/popper.js"></script>
+  <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
+  <script src="plugins/counterup/jquery.easing.js"></script>
+  <!-- Slick Slider -->
+  <script src="plugins/slick-carousel/slick/slick.min.js"></script>
+  <!-- Counterup -->
+  <script src="plugins/counterup/jquery.waypoints.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/js/datepicker.min.js"></script>
+
+  <script src="plugins/shuffle/shuffle.min.js"></script>
+  <script src="plugins/counterup/jquery.counterup.min.js"></script>
+  <!-- Google Map -->
+  <script src="plugins/google-map/map.js"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
+
+  <script src="js/script.js"></script>
+  <script src="js/contact.js"></script>
+
+  <script src="js/doctor_profile.js"></script>
+</body>
+
+</html>

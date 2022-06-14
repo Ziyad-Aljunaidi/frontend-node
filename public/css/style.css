@@ -21,6 +21,10 @@ body {
   font-weight: 400;
 }
 
+#profileBtn:hover{
+  background-color: #223a66 !important;
+}
+
 h1, .h1, h2, .h2, h3, .h3, h4, .h4, h5, .h5, h6, .h6 {
   font-family: "Exo", sans-serif;
   font-weight: 700;

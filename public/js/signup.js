@@ -19,16 +19,26 @@ function getCookie(name) {
 }
 
 async function signUp(){
+    const radioButtons = document.querySelectorAll('input[name="gender"]');
+    let gender ;
+    for (const radioButton of radioButtons) {
+        if (radioButton.checked) {
+            gender = radioButton.value;
+            break;
+        }
+    }
+
     let email = document.getElementById("email").value
     let password = document.getElementById("password").value
     let first_name = document.getElementById("first_name").value
     let last_name = document.getElementById("last_name").value
+
     let date_of_birth = document.getElementById("date_of_birth").value
     let phone_number = document.getElementById("phone_number").value
 
-    console.log(first_name, last_name, password,email, date_of_birth, phone_number)
+    console.log(first_name, last_name, password,email,gender, date_of_birth, phone_number)
    
-    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/addUser?email=${email}&password=${password}&first_name=${first_name}&last_name=${last_name}&date_of_birth=${date_of_birth}&phone_number=${phone_number}`)
+    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/addUser?email=${email}&password=${password}&first_name=${first_name}&last_name=${last_name}&gender=${gender}&date_of_birth=${date_of_birth}&phone_number=${phone_number}`)
     let data = await response.json();
     window.alert("You successfully created an account, redirect to sign in page..")
     window.location.href= '/signin'

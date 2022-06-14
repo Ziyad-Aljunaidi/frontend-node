@@ -31,8 +31,8 @@
   <body id="top">
     <header>
       <nav class="navbar navbar-expand-lg navigation" id="navbar">
-        <div class="container">
-          <a class="navbar-brand" href="index.html">
+        <div class="container" style="height: 70px;">
+          <a class="navbar-brand" href="index.html" style="margin:0%;">
             <!-- <img src="images/text-medica-logo.png" alt="" width="150 px" class="img-fluid "> -->
             <svg
               width="50%"
@@ -220,7 +220,7 @@
         <h3 > Sign Up</h3>
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputEmail4">First Name</label>
+            <label for="inputEmail4" style="font-size:18px;">First Name</label>
             <input
               type="text"
               class="form-control rounded"
@@ -230,7 +230,7 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Last Name</label>
+            <label for="inputPassword4" style="font-size:18px;">Last Name</label>
             <input
               type="text"
               class="form-control rounded"
@@ -239,10 +239,26 @@
               required
             />
           </div>
+          <div class="form-group col-md-6" >
+            <label for="inputPassword4" style="margin-right:10px; font-size:18px;">Gender</label>
+            <div class="form-check form-check-inline" >
+              <input class="form-check-input" type="radio" name="gender" id="male" value="m"   >
+              <label class="form-check-label"  for="exampleRadios1">
+                Male
+              </label>
+            </div>
+            <div class="form-check form-check-inline">
+              <input class="form-check-input" type="radio" name="gender" id="female" value="f" >
+              <label class="form-check-label" for="exampleRadios2">
+                Female
+              </label>
+            </div>
+          </div>
         </div>
+
         <div class="form-row">
           <div class="form-group col-md-6">
-            <label for="inputEmail4">Email</label>
+            <label for="inputEmail4" style="font-size:18px;">Email</label>
             <input
               type="email"
               class="form-control rounded"
@@ -252,7 +268,7 @@
             />
           </div>
           <div class="form-group col-md-6">
-            <label for="inputPassword4">Password</label>
+            <label for="inputPassword4" style="font-size:18px;">Password</label>
             <input
               type="password"
               class="form-control rounded"
@@ -263,7 +279,7 @@
           </div>
         </div>
         <div class="form-group">
-          <label for="inputAddress">Date Of Birth</label>
+          <label for="inputAddress" style="font-size:18px;">Date Of Birth</label>
           <input
             type="date"
             class="form-control rounded"
@@ -273,7 +289,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="inputAddress">Phone Number</label>
+          <label for="inputAddress" style="font-size:18px;">Phone Number</label>
           <input
             type="number"
             class="form-control rounded"
@@ -283,7 +299,7 @@
           />
         </div>
         <div class="form-group">
-          <label for="inputAddress">National ID</label>
+          <label for="inputAddress" style="font-size:18px;">National ID</label>
           <input
             type="number"
             class="form-control rounded"
@@ -297,6 +313,7 @@
       </form>
       </div>
     </div>
+    
 
 
 

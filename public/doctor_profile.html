@@ -673,7 +673,74 @@
     <script src="js/script.js"></script>
     <script src="js/contact.js"></script>
 
-
+    <script>
+        const elem = document.querySelector('input[name="foo"]');
+      
+        const start_range = document.querySelector('input[name="range-start"]');
+      
+        const end_range = document.querySelector('input[name="range-end"]');
+      
+        const history_start_range = document.querySelector('input[name="history-range-start"]');;
+        const history_end_range = document.querySelector('input[name="history-range-end"]');
+      
+        const datepickers_history_start_range = new Datepicker(history_start_range, {
+          // ...options
+          "daysOfWeekDisabled": [0, 3],
+          "datesDisabled": disablePast(),
+          "minDate": disablePast()[29]
+        });
+      
+        const datepickers_history_end_range = new Datepicker(history_end_range, {
+          // ...options
+          "maxDate": "5/13/2023",
+          "daysOfWeekDisabled": [0, 3],
+          "datesDisabled": disablePast(),
+          "minDate": disablePast()[29]
+        });
+      
+        const datepickers_start_range = new Datepicker(start_range, {
+          // ...options
+          "daysOfWeekDisabled": [0, 3],
+          "datesDisabled": disablePast(),
+          "minDate": disablePast()[29]
+        });
+      
+        const datepickers_end_range = new Datepicker(end_range, {
+          // ...options
+          "maxDate": "5/13/2023",
+          "daysOfWeekDisabled": [0, 3],
+          "datesDisabled": disablePast(),
+          "minDate": disablePast()[29]
+        });
+      
+        function disablePast() {
+          let pastDaysList = []
+          var pastday = new Date((new Date()).valueOf() - 1000 * 60 * 60 * 24);
+          for (let i = 0; i < 30; i++) {
+      
+            var dd = String(pastday.getDate()).padStart(2, '0');
+            var mm = String(pastday.getMonth() + 1).padStart(2, '0'); //January is 0!
+            var yyyy = pastday.getFullYear();
+            pastDayDate = mm + '/' + dd + '/' + yyyy;
+            pastDaysList.push(pastDayDate)
+            pastday = new Date((pastday).valueOf() - 1000 * 60 * 60 * 24);
+          }
+      
+          //console.log(pastday)
+          return pastDaysList
+      
+        }
+      
+        let dateArr = ['05/11/2022', '05/10/2022']//disablePast()
+        console.log(dateArr)
+        //console.log(new Date(disablePast()))
+        const datepicker = new Datepicker(elem, {
+          // ...options
+          "daysOfWeekDisabled": [0, 3],
+          "datesDisabled": disablePast(),
+          "minDate": disablePast()[29]
+        }); 
+      </script>
 </body>
 
 </html>
