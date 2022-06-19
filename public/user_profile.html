@@ -213,7 +213,7 @@
                         <img src="images/user_avatar.png" class="card-img" alt="..." style="width: 60%; margin: 30px; ">
                     </div>
                     <div class="col-md-8" style="margin-top: 30px;">
-                        <div class="card-body ">
+                        <div class="card-body" id="profile-main">
                             <h2 class="card-title">Ziad Sammana</h2>
                             <p class="card-text">zadj9965@gmail.com</p>
                             <p class="card-text"><small class="text-muted">Date of birth: 10/10/2001</small></p>
@@ -224,59 +224,59 @@
         </div>
 
 
-        <div class="container personal-info" style="margin-top:40px;">
+        <div class="container personal-info" id="personal-info" style="margin-top:40px;">
             <span style=>
                 <h2>Personal Info </h2>
             </span>
             <div class="card mb-12">
                 <div class="row no-gutters">
                     <div class="col-md-6" style="margin-top: 30px;">
-                        <div class="card-body ">
+                        <div class="card-body">
                             <h4 class="card-title">First Name</h4>
-                            <p class="card-text">Ziad</p>
+                            <p class="card-text" id="f-name">Ziad</p>
                         </div>
                         <div class="card-body ">
                             <h4 class="card-title">Email</h4>
-                            <p class="card-text">Sammana_elmatena@theHub.com</p>
+                            <p class="card-text" id="email">Sammana_elmatena@theHub.com</p>
 
                         </div>
                         <div class="card-body ">
                             <h4 class="card-title">Phone number</h4>
-                            <p class="card-text">01113357439</p>
+                            <p class="card-text" id="p-num">01113357439</p>
                         </div>
                     </div>
                     <div class="col-md-6" style="margin-top: 30px;">
                         <div class="card-body ">
                             <h4 class="card-title">Last Name</h4>
-                            <p class="card-text">Sammana</p>
+                            <p class="card-text" id="l-name">Sammana</p>
 
                         </div>
                         <div class="card-body ">
                             <h4 class="card-title">Birthday:</h4>
-                            <p class="card-text">22/2/2001</p>
+                            <p class="card-text" id="b-day">22/2/2001</p>
 
                         </div>
                         <div class="card-body ">
                             <h4 class="card-title">National ID</h4>
-                            <p class="card-text">1234567891011</p>
+                            <p class="card-text" id="n-id">1234567891011</p>
                         </div>
                     </div>
                 </div>
                 <div class="float-right" style="margin: 20px;">
 
                     <ul class="nav nav-pills float-right">
-                        <li class="nav-item">
+                        <li class="nav-item" style="visibility: hidden;">
                             <a class="nav-link" href="#">Forgot your Password?</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Edit Info</a>
+                            <a class="nav-link active" id="edt-btn" role="button">Edit Info</a>
                         </li>
                     </ul>
                 </div>
             </div>
         </div>
 
-        <div class="container edit-personal-info" style="margin-top:40px;">
+        <div class="container edit-personal-info" id="edit-personal-info" style="margin-top:40px;">
             <span style=>
                 <h2>Edit Personal Info </h2>
             </span>
@@ -309,7 +309,7 @@
 
                             <div class="form-group">
                                 <label for="Birthday">Date Of Birth</label>
-                                <input type="date" class="form-control" id="Birthday">
+                                <input type="date" style="height: 45px;" class="form-control" id="Birthday">
                             </div>
                             <div class="form-group">
                                 <label for="NID">National ID</label>
@@ -324,7 +324,7 @@
 
                     <ul class="nav nav-pills float-right">
                         <li class="nav-item">
-                            <a class="nav-link active" href="#">Save</a>
+                            <a class="nav-link active" id="save-btn" role="button">Save</a>
                         </li>
                     </ul>
                 </div>
@@ -412,7 +412,9 @@
 
 
     <!-- Main jQuery -->
-    <script src="plugins/jquery/jquery.js"></script>
+    <!--<script src="plugins/jquery/jquery.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
     <!-- Bootstrap 4.3.2 -->
     <script src="plugins/bootstrap/js/popper.js"></script>
     <script src="plugins/bootstrap/js/bootstrap.min.js"></script>
@@ -429,9 +431,8 @@
     <script
         src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
-    <script src="js/script.js"></script>
-    <script src="js/contact.js"></script>
-    <script src="js/auth.js"></script>
+    <!--<script src="js/auth.js"></script>-->
+    <script src="js/usrProfile.js"></script>
 
 
 </body>
