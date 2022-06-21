@@ -25,7 +25,7 @@ const static_path = path.join(__dirname, "public");
 // app.use(cors(corsOptions));
 app.use(express.static(static_path));
 app.use(express.urlencoded({ extended: true}));
-app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
+app.listen(process.env.PORT || 1337, () => console.log('app is listening at localhost:1337'));
 
 app.use("/", express.static('./public/index.html'))
 

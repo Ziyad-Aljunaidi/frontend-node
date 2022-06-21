@@ -37,7 +37,7 @@ function appendDataToDiv(data) {
     appointment_btn.innerHTML = "Make appointment <i class='icofont-simple-right ml-2'>"
 
     let doc_img = document.createElement("img");
-    doc_img.src = "images/team/1.jpg";
+    doc_img.src = "images/doc_avatar.png";
     doc_img.alt = "doc_avatar";
 
     let ul_parent = document.createElement("ul");
