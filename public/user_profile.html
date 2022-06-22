@@ -27,6 +27,9 @@
         h2 {
             color: #223a66;
         }
+        h4{
+            color: #223a66;
+        }
 
         .personal-info {
             display: block;
@@ -86,6 +89,10 @@
 
         #loading-screen {
             display: block;
+        }
+
+        #no-appointments{
+            display: none;
         }
     </style>
 
@@ -342,7 +349,7 @@
                 </div>
             </div>
 
-            <div class="card2">
+            <div class="card2" id="app-table">
                 <table class="table table-striped">
                     <thead>
                         <tr>
@@ -403,6 +410,9 @@
                     -->
                     </tbody>
                 </table>
+            </div>
+            <div class="alert alert-primar" id="no-appointments" style="margin: 40px; background-color: aquamarine !important;text-align:center; color: #223a66; font-weight: bold;">
+                No Appointments Found.
             </div>
 
         </div>

@@ -36,6 +36,7 @@ app.use("/newappointment", express.static('./public/newappointment.html'))
 app.use("/confirmation", express.static('./public/confirmation.html'))
 app.use("/doctor_profile", express.static('./public/doctor.html'))
 app.use("/myprofile", express.static('./public/user_profile.html'))
+app.use("/rate", express.static("./public/rating_doc.html"))
 
 app.use("/signin", express.static('./public/signin.html'))
 app.use("/signup", express.static('./public/signup.html'))

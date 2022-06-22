@@ -1,30 +1,61 @@
 $(window).on("load", function(){
     if(getCookie("user_id") != null){
         let user_id =  getCookie("user_id")
+
         getAppointmentsData(user_id).then((result) =>{
             console.log(result.appointments)
             let appointments = result.appointments
             let appointmentsList = []
+
+            let formatedTime
             for(let i =0; i<appointments.length; i++){
                 let perList = []
                 perList.push(appointments[i].name)
                 perList.push(appointments[i].speciality)
                 perList.push(appointments[i].date_stamp)
-                perList.push(appointments[i].user_time)
-                perList.push(appointments[i].reason_code)
+
+                if(appointments[i].user_time.length >3){
+                    formatedTime = formatTime(appointments[i].user_time.toString(), 2, ":")
+                }
+                else{
+                    formatedTime = formatTime(appointments[i].user_time.toString(), 1, ":")
+                }
+                perList.push(formatedTime)
+
+                if(appointments[i].reason_code == "1"){
+                  perList.push("Examination")
+                }else{
+                  perList.push("Consultation")
+                }
+                //perList.push(appointments[i].reason_code)
                 perList.push(appointments[i].fees)
-                perList.push(appointments[i].status_code)
+
+                if(appointments[i].status_code == "1"){
+                  perList.push("Pending")
+                }else if(appointments[i].status_code == "2"){
+                  perList.push("Confirmed")
+                }else if(appointments[i].status_code == "3"){
+                  perList.push("Completed")
+                }else{
+                  perList.push("Cancelled")
+                }
+                //perList.push(appointments[i].status_code)
                 appointmentsList.push(perList)
                 
             }
             console.log("PDF JS FILE")
             console.log(appointmentsList)
-            demoFromHTML(appointmentsList)
-        })
+            
+          getUserData(user_id).then((userData)=>{
+            console.log(userData)
+            user_name = userData.first_name +" "+ userData.last_name
+            user_phone_number = userData.phone_number
+            user_date_of_birth = userData.date_of_birth
+            demoFromHTML(appointmentsList, user_name, user_phone_number, user_date_of_birth )
+          })
+          })
+
     }else{
-        // document.getElementById("profileBtn").style.display = 'none'
-        // document.getElementById("profile-dropdown").style.display = 'none'
-        // document.getElementById("loginBtn").style.display = 'block'
         window.location.href = "/signin"
         
     }
@@ -32,6 +63,9 @@ $(window).on("load", function(){
     //document.getElementById("loading-screen").style.display = "none"
 })
 
+function formatTime(str, index, stringToAdd){
+  return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
+}
 
 function getCookie(name) {
     var nameEQ = name + "=";
@@ -44,7 +78,7 @@ function getCookie(name) {
     return null;
 }
 
-function demoFromHTML(rowsData) {
+function demoFromHTML(rowsData, name, phone_number, date_of_birth) {
     var columns = ["Doctor","Specialty", "Date", "Time", "Reason", "Fee", "Status"];
     var rows = rowsData
     $("#print-patient-report").click(() => {
@@ -56,17 +90,19 @@ function demoFromHTML(rowsData) {
       doc.setFontSize(12);
       doc.setFontType("bold")
       //doc.setFont("Times");
-      doc.text(15, 20, "Ziad Salah");
+      doc.text(15, 20, name);
     
       doc.setFontSize(10);
+      doc.setFontType("bold")
+      doc.text(15, 25,"Phone number:" )
       doc.setFontType("normal")
-      doc.text(15, 25, "01022389565")
+      doc.text(42, 25, phone_number)
       
       doc.setFontType("bold")
       doc.text(15, 30,"Date Of Birth:" )
     
       doc.setFontType("normal")
-      doc.text(38,30, "16/2/2001")
+      doc.text(38,30, date_of_birth)
     
     
       
@@ -95,7 +131,7 @@ function demoFromHTML(rowsData) {
     
       });
       doc.setPage(1)
-      doc.save("table.pdf");
+      doc.save("Medica Report "+name+" "+Date.now());
     });
     
 

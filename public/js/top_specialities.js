@@ -1,4 +1,28 @@
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+$(window).on("load", function(){
+    if(getCookie("user_id") != null){
+        document.getElementById("profileBtn").style.display = 'block'
+        document.getElementById("profile-dropdown").style.display = 'black'
+        document.getElementById("loginBtn").style.display = 'none'
+    }else{
+        // document.getElementById("profileBtn").style.display = 'none'
+        // document.getElementById("profile-dropdown").style.display = 'none'
+        // document.getElementById("loginBtn").style.display = 'block'
+        window.location.href = "/signin"
+        
+    }
 
+    //document.getElementById("loading-screen").style.display = "none"
+})
 const urlParams = new URLSearchParams(window.location.search);
 const myParam = urlParams.get('speciality');
 console.log(myParam)
@@ -32,7 +56,7 @@ function appendDataToDiv(data) {
     let btn_div = document.createElement("div")
     let appointment_btn = document.createElement("a")
     //appointment_btn.href = `/appointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
-    appointment_btn.href = `/newappointment?doc_name=${data[i].name}&doc_id=${data[i].id}`
+    appointment_btn.href = `/doctor_profile?doc_id=${data[i].id}`
     appointment_btn.className = "btn btn-main-2 btn-icon btn-round-full"
     appointment_btn.innerHTML = "Make appointment <i class='icofont-simple-right ml-2'>"
 
@@ -117,7 +141,7 @@ function appendDataToDiv(data) {
 //appendDataToDiv("haha")
 goToSpeciality(myParam).then((result) => {
     console.log(result)
-    document.querySelector('#loading').style.visibility = "hidden"
+    document.getElementById('loading-screen').style.display = "none"
     appendDataToDiv(result)
     
 
