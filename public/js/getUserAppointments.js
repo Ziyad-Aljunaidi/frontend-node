@@ -92,14 +92,14 @@ function getPrescription(prescription) {
   }
 }
 
-function rateDoc(rate, rate_code, doc_id) {
+function rateDoc(rate, rate_code, doc_id, visit_id) {
   if (rate == "none") {
     if (parseInt(rate_code) == 0) {
-      let url = `/rate?doc_id=${doc_id}`;
+      let url = `/rate?doc_id=${doc_id}&visit_id=${visit_id}`;
       let rateBtn = `<a href="${url}" class="badge badge-secondary" style="pointer-events: none">Rate now</a>`;
       return rateBtn;
     } else {
-      let url = `/rate?doc_id=${doc_id}`;
+      let url = `/rate?doc_id=${doc_id}&visit_id=${visit_id}`;
       let rateBtn = `<a href="${url}" class="badge badge-primary">Rate now</a>`;
       return rateBtn;
     }
@@ -163,6 +163,7 @@ async function putAppointments(data) {
     let doctor_id = appointments[i].doc_id;
     let rate = appointments[i].rating;
     let rate_code = appointments[i].rate_code;
+    let visit_id = appointments[i].visit_id
 
     td1.innerHTML = doc_name;
     td2.innerHTML =
@@ -174,7 +175,7 @@ async function putAppointments(data) {
     td7.innerHTML = getStatus(status);
     td8.innerHTML = getPrescription(prescription);
     td9.innerHTML = viewProfile(doctor_id);
-    td10.innerHTML = rateDoc(rate, rate_code, doctor_id);
+    td10.innerHTML = rateDoc(rate, rate_code, doctor_id, visit_id);
 
     tr_table.appendChild(th);
     tr_table.appendChild(td1);
