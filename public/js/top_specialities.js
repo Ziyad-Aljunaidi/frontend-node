@@ -32,6 +32,13 @@ async function goToSpeciality(speciality) {
     return data
 }
 
+let query= urlParams.get("q")
+async function getSearchQuery(query){
+    let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/search?q=${query}`)
+    let data = await response.json();
+    return data
+}
+
 
 async function getRating(query_data){
 
@@ -139,10 +146,18 @@ function appendDataToDiv(data) {
 
 
 //appendDataToDiv("haha")
-goToSpeciality(myParam).then((result) => {
-    console.log(result)
-    document.getElementById('loading-screen').style.display = "none"
-    appendDataToDiv(result)
-    
+if (urlParams.has("speciality")){
+    goToSpeciality(myParam).then((result) => {
+        console.log(result)
+        document.getElementById('loading-screen').style.display = "none"
+        appendDataToDiv(result) 
+    })
+}else if (urlParams.has("q")){
+    getSearchQuery(query).then((result)=>{
+        console.log(result)
+        document.getElementById('loading-screen').style.display = "none"
+        appendDataToDiv(result) 
+        
 
-})
+    })
+}

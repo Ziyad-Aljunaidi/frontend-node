@@ -138,6 +138,8 @@ getDocData(doc_id).then( async (result) =>{
         let picked_date = document.getElementById('start-date').value
         const available_times = await setAvailableTimes(picked_date,result)
         const reserved_times = await getReservedTimes(doc_id)
+
+        console.log("RESERVED TIME"+ JSON.stringify(reserved_times,0,2))
         //getReservedTimes(doc_id).then((data) =>{
         //    console.log(data.patients.length)
         //})
@@ -166,7 +168,7 @@ function formatTime(str, index, stringToAdd){
     return str.substring(0, index) + stringToAdd + str.substring(index, str.length);
 }
 
-console.log(formatTime("745",1,":"))
+//console.log(formatTime("745",1,":"))
 
 document.getElementById('start-date').addEventListener('change', () => {
     console.log(this.innerHTML)

@@ -79,13 +79,13 @@
 	</style>
 </head>
 
-<body id="top">
+<body >
 
 	<div class="loading style-2" id="loading-screen">
         <div class="loading-wheel"></div>
       </div>
 
-	<header>
+	<header id="top">
 
 		<nav class="navbar navbar-expand-lg navigation" id="navbar">
 			<div class="container" style="height:70px ;">
@@ -213,24 +213,24 @@
 						<div class="input-group mb-3">
 
 							<input type="text" class="form-control rounded-left"
+								id="searchField"
 								placeholder="Doctor's name or speciality" aria-label="Doctor's name or speciality"
 								aria-describedby="basic-addon2">
 
 							<div class="input-group-append">
-								<span class="input-group-text w-100" id="basic-addon2"> <a href="#"><i
+								<span class="input-group-text w-100" id="basic-addon2" style="background-color: #e12454;"> 
+									<a role="button" onclick="searchQuery()" id="srchBtn" style="color: white;"><i
 											class="bi bi-search"></i></a></span>
 							</div>
 						</div>
 
-
-
 						<div class="btn-container ">
-							<a href="appoinment.html" target="_blank"
-								class="btn btn-main-2 btn-icon btn-round-full">Make appoinment <i
-									class="icofont-simple-right ml-2  "></i></a>
+							<a role="button" target="_blank" style="color:white"
+								onclick="scroll_to_sub('top-specialites')"
+								class="btn btn-main-2 btn-icon btn-round-full">Top Specialities<i
+									class="icofont-simple-down ml-2  "></i></a>
 						</div>
-						<div class="input-group">
-						</div>
+
 					</div>
 				</div>
 			</div>
@@ -257,14 +257,14 @@
 				<div class="col-lg-4">
 					<div class="about-content pl-4 mt-4 mt-lg-0">
 						<h2 class="title-color">Personal care <br>& healthy living</h2>
-						<p class="mt-4 mb-5">We provide best leading medical service.</p>
+						<h5 style="color:#6F8BA4;" class="mt-4 mb-5">We provide best leading medical service.</h5>
 					</div>
 				</div>
 			</div>
 		</div>
 	</section>
 
-	<section class="section service gray-bg">
+	<section class="section service gray-bg" id="top-specialites">
 		<div class="container">
 			<div class="row justify-content-center">
 				<div class="col-lg-7 text-center">
@@ -447,7 +447,7 @@
 
 				<div class="row">
 					<div class="col-lg-4">
-						<a class="backtop js-scroll-trigger" href="#top">
+						<a class="backtop js-scroll-trigger" role="button" style="color: white;" onclick="scroll_to_sub('top')">
 							<i class="icofont-long-arrow-up"></i>
 						</a>
 					</div>
@@ -482,8 +482,33 @@
 		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAkeLMlsiwzp6b3Gnaxd86lvakimwGA6UA&callback=initMap"></script>
 
 	<script src="js/script.js"></script>
-	<script src="js/contact.js"></script>
+	<!--<script src="js/contact.js"></script>-->
 	<script src="js/auth.js"></script>
+
+	<script>
+		function scroll_to_sub(element_id) {
+    		 var elmntToView = document.getElementById(element_id);
+    		 elmntToView.scrollIntoView({ block: 'end', behavior: 'smooth' });
+		}
+		
+		function searchQuery(){
+			let query = document.getElementById('searchField').value
+			window.location.href = `/result?q=${query}`
+			console.log(query)
+		}
+
+		let searchFeild  = document.getElementById('searchField');
+		searchFeild.addEventListener("keypress", function(event){
+			if (event.key === "Enter") {
+    		// Cancel the default action, if needed
+    		event.preventDefault();
+    		// Trigger the button element with a click
+    		document.getElementById("srchBtn").click();
+			}
+		})
+
+	</script>
+	
 
 
 </body>
