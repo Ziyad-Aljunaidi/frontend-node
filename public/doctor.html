@@ -22,6 +22,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/vanillajs-datepicker@1.2.0/dist/css/datepicker.min.css">
   <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.3/font/bootstrap-icons.css">
 
   <!-- Main Stylesheet -->
   <link rel="stylesheet" href="css/style.css">
@@ -98,12 +99,66 @@
     #carouselExampleInterval{
       display: none;
     }
+    .loading {
+            width: 100%;
+            height: 100%;
+            display: block;
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            background-color: white;
+            z-index: 20;
+        }
+
+        .loading-wheel {
+            width: 20px;
+            height: 20px;
+            margin-top: -40px;
+            margin-left: -40px;
+
+            position: absolute;
+            top: 50%;
+            left: 50%;
+
+            border-width: 30px;
+            border-radius: 50%;
+            -webkit-animation: spin 1s linear infinite;
+            animation: spin 1s linear infinite;
+        }
+
+        .style-2 .loading-wheel {
+            border-style: double;
+            border-color: #e12454 transparent;
+        }
+
+        @keyframes spin {
+            0% {
+                -webkit-transform: rotate(0);
+            }
+
+            100% {
+                -webkit-transform: rotate(-360deg);
+            }
+        }
+
+        #loading-screen {
+            display: block;
+        }
+
+        #no-reviews{
+          display: none;
+        }
 
   </style>
 
 </head>
 
 <body id="top">
+  <div class="loading style-2" id="loading-screen">
+    <div class="loading-wheel"></div>
+  </div>
 
   <header>
     <!--
@@ -129,8 +184,8 @@
 	</div>
 	-->
     <nav class="navbar navbar-expand-lg navigation" id="navbar">
-      <div class="container">
-        <a class="navbar-brand" href="index.html">
+      <div class="container" style="height: 70px;">
+        <a class="navbar-brand" href="index.html" style="margin:0%;">
           <!-- <img src="images/text-medica-logo.png" alt="" width="150 px" class="img-fluid "> -->
           <svg width="50%" height="50%" viewBox="0 0 1600 670" version="1.1" xmlns="http://www.w3.org/2000/svg"
             xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/"
@@ -200,6 +255,30 @@
 
               </ul>
             </li>
+            <li class="nav-item dropdown" style="margin-left:20px ;">
+              <div>
+                  <a id="loginBtn" class="nav-link" href="/signin"
+                      style="padding:8px;background-color:#e12454; border-radius: 10px; color: white; font-size:12px;margin-top: 5px;">Login
+                      | Sign up</a>
+
+                  <div id="profile-dropdown">
+                      <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                          data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                          <div id="profileBtn"
+                              style="width:40px; height:40px;padding:2px;background-color:#e12454; border-radius: 50px; color: white; font-size:24px;margin-top: 5px; text-align: center;">
+                              <i class="bi bi-person-circle" style="margin-bottom:5px !important"></i>
+                          </div>
+                      </a>
+                      <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                          <a class="dropdown-item" href="/myprofile">My Profile</a>
+                          <a class="dropdown-item" href="/signin">Logout <i
+                                  class="icofont-logout"></i></a>
+                      </div>
+                  </div>
+
+              </div>
+
+          </li>
           </ul>
         </div>
       </div>
@@ -213,11 +292,11 @@
       <div class="card mb-12">
         <div class="row no-gutters">
           <div class="col-md-4">
-            <img src="images/doc_avatar.png" class="card-img" alt="..." style="width: 60%; margin: 30px; ">
+            <img src="images/doc_avatar.png" class="card-img" alt="..." style="width: 60%; margin: 60px; ">
           </div>
           <div class="col-md-8" style="margin-top: 30px;">
             <div class="card-body ">
-              <h2 class="card-title" id="doc-name">Dr.Magdy Abdelaziz</h2>
+              <h2 class="card-title" id="doc-name"></h2>
               <div>
                 <i class="icofont-star" style="color: #ffb624;"></i>
                 <i class="icofont-star" style="color: #ffb624;"></i>
@@ -227,11 +306,9 @@
               </div>
 
               <h4>Speciality</h4>
-              <p class="card-text">Dermatology</p>
+              <p class="card-text" id="speciality"></p>
               <h5>Qualification</h5>
-              <p class="card-text">consultant of dermatology, venereology, andrology, infertility,
-                dermatology, laser treatment, mesotherapy, erectile dysfunction and premature
-                ejaculation</p>
+              <p class="card-text" id="qualification"></p>
             </div>
 
 
@@ -258,9 +335,14 @@
             <div>
             <button type="button" class="btn btn-primary" id="get-appointments">Get appointments</button>
           </div>
+          <!--
             <div class="alert alert-primary col-md-12 mt-2 " role="alert" id="pick-date">
               Please pick a date to display available appointments
             </div>
+          -->
+            <div class="alert alert-primar" id="pick-date" style="width: 100%; margin: 16px; background-color: aquamarine !important;text-align:center; color: #223a66; font-weight: bold;">
+              Please pick a date to display available appointments <i class="bi bi-calendar-minus-fill"></i>
+          </div>
             <div class="d-flex justify-content-center col-md-12" >
               <div class="spinner-border text-primary" id="loading-appointments"   role="status">
                 <span class="sr-only">Loading...</span>
@@ -333,9 +415,10 @@
       </div>
     </div>
 
-    <div class="container doctor-reviews card p-4" style="margin-top: 40px; ">
+    <div class="container doctor-reviews " style="margin-top: 40px; ">
       <h4>Patient's Reviews</h4>
-      <div>
+      <div id="reviews-list">
+        <!--
         <div class="card mb-12" style="margin:30px">
           <div class="row no-gutters">
 
@@ -345,6 +428,7 @@
             <div class="col-md-4 float-left">
               <h5 class="align-middle">Ziyad Gehad</h5>
             </div>
+
             <div class="col-md-10" style="margin-top:-30px !important;">
               <div class="card-body">
                 <div>
@@ -414,6 +498,10 @@
             </div>
           </div>
         </div>
+      -->
+        <div class="alert alert-primar" id="no-reviews" style="margin: 30px; background-color: aquamarine !important;text-align:center; color: #223a66; font-weight: bold;">
+          No Reviews Yet <i class="bi bi-chat-left-quote-fill"></i>
+      </div>
 
       </div>
 
@@ -447,6 +535,8 @@
 
   <script src="js/script.js"></script>
   <script src="js/contact.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/getReviews.js"></script>
 
   <script src="js/doctor_profile.js"></script>
 </body>

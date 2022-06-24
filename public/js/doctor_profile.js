@@ -5,7 +5,25 @@ console.log(doc_id)
 
 let days = [0,1,2,3,4,5,6]
 const elem = document.querySelector('input[name="start-date"]');
-      
+
+let doctor_data
+$(window).on("load", function (){
+    //
+    document.getElementById('loading-screen').style.display = 'block'
+    getDocData(doc_id).then(async (result) =>{
+        doctor_data = result
+        setDocData(doctor_data).then((result) =>{
+            if(result == null){
+                document.getElementById('loading-screen').style.display = 'none'
+            }
+        })
+    })
+    
+
+    
+});
+
+
       
 function disablePast() {
   let pastDaysList = []
@@ -39,13 +57,20 @@ async function getDocData(doc_id){
 
 
 async function setDocData(data){
+    //document.getElementById("loading-screen").style.display = "block";
     document.getElementById('doc-name').innerHTML = "Dr."+data.name
+    document.getElementById('speciality').innerHTML = data.category
+    document.getElementById('qualification').innerHTML = data.qualification
+
+    //document.getElementById("loading-screen").style.display = "none";
+    return null
+
 }
 
 //let data = getDocData(doc_id)
 
-async function workingDays(data){
-    let working_days = data.working_days
+async function workingDays(data, clinic_code){
+    let working_days = data.clinics[clinic_code].working_days
     for(let i = 0; i< working_days.length; i++){
         days = days.filter((item) =>{
             return item != working_days[i].day_num
@@ -73,17 +98,31 @@ async function makeTimes(data){
 
 async function getReservedTimes(doc_id){
     let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/getAppointments?doc_id=${doc_id}`)
-    let data = response.json()
-    return data
+    let data = await response.json()
+    
+    if(data != 0){
+        console.log(data)
+        return data
+        
+    }
+    else{
+        data = {patients:[0]}
+        console.log(data)
+        return data
+       
+    }
+    
 }
 
-async function setAvailableTimes(date, data){
+
+async function setAvailableTimes(date, data, clinic_code){
     let day_date = new Date(date)
     let day = day_date.getDay()
+    let working_days = data.clinics[clinic_code].working_days
     let available_times = []
-    for(let i =0;i < data.working_days.length; i++){
-        if(data.working_days[i].day_num == day){
-            for(let j =data.working_days[i].from; j< data.working_days[i].to ; j+=data.average_time){
+    for(let i =0;i < working_days.length; i++){
+        if(working_days[i].day_num == day){
+            for(let j =working_days[i].from; j<working_days[i].to ; j+=working_days[i].average_time){
 
                 if(j==360 || j==460 || j==560||j==660|| j == 760 || j==860 || j==960 || j==1060 || j==1160 || j==1260){
                     j+=40
@@ -124,7 +163,8 @@ let doc_data
 getDocData(doc_id).then( async (result) =>{
     //console.log(result)
     setDocData(result)
-    workingDays(result)
+    
+    workingDays(result,0)
     //makeTimes(result)
 
 
@@ -136,7 +176,7 @@ getDocData(doc_id).then( async (result) =>{
             console.log(e)
         }
         let picked_date = document.getElementById('start-date').value
-        const available_times = await setAvailableTimes(picked_date,result)
+        const available_times = await setAvailableTimes(picked_date,result,0)
         const reserved_times = await getReservedTimes(doc_id)
 
         console.log("RESERVED TIME"+ JSON.stringify(reserved_times,0,2))
