@@ -94,6 +94,7 @@ function getPrescription(prescription) {
 async function updateAppointmentStatus(doc_id,user_id,visit_id,user_time,status_code,date_stamp,reason_code,fees,prescription,clinic_code){
   let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/status_appointment?doc_id=${doc_id}&user_id=${user_id}&visit_id=${visit_id}&user_time=${user_time}&status_code=${status_code}&date_stamp=${date_stamp}&reason_code=${reason_code}&fees=${fees}&prescription=${prescription}&clinic_code=${clinic_code}`)
   let data = await response.json()
+  location.reload();
   return data
 }
 
@@ -105,7 +106,7 @@ function cancelAppointment(data){
     return disabledCancelBtn = '<a href="#" class="badge badge-secondary"  style="pointer-events: none">Cancel</a>'
   }else{
     //let cancel_func = updateAppointmentStatus(data.doc_id,data.user_id,data.visit_id,data.user_time,"5",data.date_stamp,data.reason_code,data.fees,data.prescription,data.clinic_code)
-     return caneclBtn = `<a role="button" style="color:white" onclick="updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')" id="cancel-btn"class="badge badge-danger">Cancel</a>`
+     return caneclBtn = `<a role="button" style="color:white; cursor: pointer;" onclick="updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')" id="cancel-btn"class="badge badge-danger">Cancel</a>`
      //"updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')"
 
   }
