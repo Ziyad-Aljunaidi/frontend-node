@@ -91,6 +91,23 @@ function getPrescription(prescription) {
     return prescription_btn;
   }
 }
+async function updateAppointmentStatus(doc_id,user_id,visit_id,user_time,status_code,date_stamp,reason_code,fees,prescription,clinic_code){
+  let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/status_appointment?doc_id=${doc_id}&user_id=${user_id}&visit_id=${visit_id}&user_time=${user_time}&status_code=${status_code}&date_stamp=${date_stamp}&reason_code=${reason_code}&fees=${fees}&prescription=${prescription}&clinic_code=${clinic_code}`)
+  let data = await response.json()
+  return data
+}
+
+function cancelAppointment(data){
+  console.log("APPOINTMENT STATUS: "+ data.status_code)
+  let caneclBtn = '<a href="#" class="badge badge-danger">Cancel</a>'
+  let disabledCancelBtn = '<a href="#" class="badge badge-secondary"  style="pointer-events: none">Danger</a>'
+  if (data.status_code == '3' ||data.status_code == '4'||data.status_code == '5' ){
+    return disabledCancelBtn = '<a href="#" class="badge badge-secondary"  style="pointer-events: none">Cancel</a>'
+  }else{
+     return caneclBtn = '<a role="button" style="color:white" id="cancel-btn"class="badge badge-danger">Cancel</a>'
+
+  }
+}
 
 function rateDoc(rate, rate_code, doc_id, visit_id) {
   if (rate == "none") {
@@ -141,6 +158,7 @@ async function putAppointments(data) {
     let td8 = document.createElement("td");
     let td9 = document.createElement("td");
     let td10 = document.createElement("td");
+    let td11 = document.createElement("td");
 
     let th_num = i + 1;
     th.innerHTML = th_num;
@@ -176,6 +194,7 @@ async function putAppointments(data) {
     td8.innerHTML = getPrescription(prescription);
     td9.innerHTML = viewProfile(doctor_id);
     td10.innerHTML = rateDoc(rate, rate_code, doctor_id, visit_id);
+    td11.innerHTML = cancelAppointment(appointments[i])
 
     tr_table.appendChild(th);
     tr_table.appendChild(td1);
@@ -188,8 +207,17 @@ async function putAppointments(data) {
     tr_table.appendChild(td8);
     tr_table.appendChild(td9);
     tr_table.appendChild(td10);
+    tr_table.appendChild(td11)
 
     appointments_table.appendChild(tr_table);
     console.log("done" + i);
+
+    $("#cancel-btn").click( function(){
+      console.log("cancel-btn")
+      //updateAppointmentStatus(appointments[i].doc_id,appointments[i].user_id,appointments[i].visit_id,appointments[i].user_time,"5",appointments[i].date_stamp,appointments[i].reason_code,appointments[i].fees,appointments[i].prescription,appointments[i].clinic_code)
+    })
+    
   }
 }
+
+

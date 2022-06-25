@@ -24,6 +24,21 @@ $(window).on("load", function (){
 });
 
 
+function check_cookie(callback){
+    if (callback != null){
+        try{
+            console.log("cookie found!")
+            //window.location.href("/")
+        }
+        catch(e){
+            console.log(e)
+        }
+    }else{
+        window.location.href ="/signin"
+    }
+}
+
+
       
 function disablePast() {
   let pastDaysList = []
@@ -55,12 +70,30 @@ async function getDocData(doc_id){
 }
 
 
-
+let reason_code;
+let final_fee
 async function setDocData(data){
     //document.getElementById("loading-screen").style.display = "block";
     document.getElementById('doc-name').innerHTML = "Dr."+data.name
     document.getElementById('speciality').innerHTML = data.category
     document.getElementById('qualification').innerHTML = data.qualification
+    document.getElementById("inlineRadio1-label").innerHTML = "Examination"+` (Fee: ${data.fee}LE)`
+    document.getElementById("inlineRadio2-label").innerHTML = "Consultation"+` (Fee: ${data.fee1}LE)`
+    $("#inlineRadio1").click(function(){
+        document.getElementById("get-appointments").disabled = false
+        reason_code = document.getElementById("inlineRadio1").value
+        final_fee = data.fee
+    })
+    $("#inlineRadio2").click(function(){
+        document.getElementById("get-appointments").disabled = false
+        reason_code = document.getElementById("inlineRadio2").value
+        final_fee = data.fee1
+    })
+    
+
+
+
+
 
     //document.getElementById("loading-screen").style.display = "none";
     return null
@@ -153,12 +186,53 @@ async function checkTime(reserved_times, available_times, date){
     return final_times
 }
 
+async function makeAppointment(picked_date, reason_code, final_fee, date_stamp){
+    let doc_ids = doc_id
+    let user_id = await getCookie('user_id')
+    let visit_id = Date.now()
+    let fee;
+    let formatedDate;
+    let reason
 
-// or(let k = 0; k < reserved_data.patients.length; k++){
-//    if(date == reserved_data.patients[k].date_stamp){
-//        if(){}
-//    }
-// 
+    if(picked_date.toString().length >3){
+        formatedDate = formatTime(picked_date.toString(),2,":")
+    }else{
+        formatedDate = formatTime(picked_date.toString(),1,":")
+    }
+
+    if(reason_code == 1){
+        reason = "Examination"
+    }else{
+        reason = "Consultation"
+    }
+    console.log(doc_ids, user_id ,picked_date, reason_code, visit_id, final_fee)
+
+    let modal_body = document.getElementById("modal-body")
+    modal_body.innerHTML =`          
+    Your Appointment: ${formatedDate}pm<br>
+    Visit Reason: ${reason}<br>
+    Fees: ${final_fee}<br>
+    An SMS will be sent shortly to you upon doctor's confirmation with Google-map Clinic's location,
+    Please Attend 15 mins before your appointment.`
+    console.log("MODAL BODY"+ modal_body)
+
+    $("#confirm-app-btn").click(async function(){
+        window.location.href ="/myprofile"
+        console.log(doc_ids, user_id ,picked_date, reason_code, visit_id, final_fee)
+        document.getElementById('loading-screen').style.display = "block"
+        document.getElementById("modal-content").style.display = "none"
+        await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/set_appointment?doc_id=${doc_id}&user_id=${user_id}&visit_id=${visit_id}&user_time=${picked_date}&date_stamp=${date_stamp}&status_code=${"1"}&reason_code=${reason_code}&fees=${final_fee}&clinic_code=${0}`).then(()=>{
+            
+        })
+        //let data = await response.json()
+        
+
+    })
+
+
+
+}
+
 let doc_data 
 getDocData(doc_id).then( async (result) =>{
     //console.log(result)
@@ -218,9 +292,10 @@ document.getElementById('start-date').addEventListener('change', () => {
 function getDateInput(){
     let date = document.getElementById('start-date').value
     console.log(date)
+    return date
 }
 document.getElementById('get-appointments').setAttribute('onclick', 'getDateInput()')
-
+document.getElementById('get-appointments').disabled = true;
 
 
 function appointmentBtn(date){
@@ -230,12 +305,12 @@ function appointmentBtn(date){
     if(date.toString().length >3){
         let formatedDate = formatTime(date.toString(), 2, ":")
         console.log(formatedDate)
-        appointment_btn = `<button type="button" class="btn btn-light" value="${date}">${formatedDate} pm</button>`
+        appointment_btn = `<button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="makeAppointment(${date}, ${reason_code}, ${final_fee}, '${getDateInput()}')" value="${date}">${formatedDate} pm</button>`
     }
     else{
         let formatedDate = formatTime(date.toString(), 1, ":")
         
-        appointment_btn = `<button type="button" class="btn btn-light" value="${date}">${formatedDate} pm</button>`
+        appointment_btn = `<button type="button" class="btn btn-light" data-toggle="modal" data-target="#exampleModalCenter" onclick="makeAppointment(${date}, ${reason_code}, ${final_fee},'${getDateInput()}')" value="${date}">${formatedDate} pm</button>`
     }
     return appointment_btn
     
