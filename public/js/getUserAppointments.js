@@ -37,7 +37,7 @@ function getCookie(name) {
 
 function viewProfile(doc_id) {
   let url = `doctor_profile?doc_id=${doc_id}`;
-  let view_profile = `<a href=${url} class="badge badge-secondary">View Profile</a>`;
+  let view_profile = `<a href=${url} class="badge badge-warning">View Profile</a>`;
   return view_profile;
 }
 
@@ -104,7 +104,9 @@ function cancelAppointment(data){
   if (data.status_code == '3' ||data.status_code == '4'||data.status_code == '5' ){
     return disabledCancelBtn = '<a href="#" class="badge badge-secondary"  style="pointer-events: none">Cancel</a>'
   }else{
-     return caneclBtn = '<a role="button" style="color:white" id="cancel-btn"class="badge badge-danger">Cancel</a>'
+    //let cancel_func = updateAppointmentStatus(data.doc_id,data.user_id,data.visit_id,data.user_time,"5",data.date_stamp,data.reason_code,data.fees,data.prescription,data.clinic_code)
+     return caneclBtn = `<a role="button" style="color:white" onclick="updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')" id="cancel-btn"class="badge badge-danger">Cancel</a>`
+     //"updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')"
 
   }
 }
@@ -212,10 +214,10 @@ async function putAppointments(data) {
     appointments_table.appendChild(tr_table);
     console.log("done" + i);
 
-    $("#cancel-btn").click( function(){
-      console.log("cancel-btn")
-      //updateAppointmentStatus(appointments[i].doc_id,appointments[i].user_id,appointments[i].visit_id,appointments[i].user_time,"5",appointments[i].date_stamp,appointments[i].reason_code,appointments[i].fees,appointments[i].prescription,appointments[i].clinic_code)
-    })
+   //$("#cancel-btn").click( function(){
+   //  console.log("cancel-btn")
+   //  //updateAppointmentStatus(appointments[i].doc_id,appointments[i].user_id,appointments[i].visit_id,appointments[i].user_time,"5",appointments[i].date_stamp,appointments[i].reason_code,appointments[i].fees,appointments[i].prescription,appointments[i].clinic_code)
+   //})
     
   }
 }
