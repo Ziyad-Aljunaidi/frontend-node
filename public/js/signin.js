@@ -38,7 +38,7 @@ async function verify(){
             document.getElementById("password").value = ""
         }
     }catch{
-        window.alert("email or password ar incorrect!")
+        window.alert("Account is Suspended")
     }
 
 

@@ -79,6 +79,7 @@ async function setDocData(data){
     document.getElementById('qualification').innerHTML = data.qualification
     document.getElementById("inlineRadio1-label").innerHTML = "Examination"+` (Fee: ${data.fee}LE)`
     document.getElementById("inlineRadio2-label").innerHTML = "Consultation"+` (Fee: ${data.fee1}LE)`
+    document.getElementById("clinic_address").innerHTML = '<b>Clinic Address: </b>'+data.address
     $("#inlineRadio1").click(function(){
         document.getElementById("get-appointments").disabled = false
         reason_code = document.getElementById("inlineRadio1").value

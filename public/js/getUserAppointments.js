@@ -114,7 +114,7 @@ function cancelAppointment(data){
 
 function rateDoc(rate, rate_code, doc_id, visit_id) {
   if (rate == "none") {
-    if (parseInt(rate_code) == 0) {
+    if (rate_code == "0") {
       let url = `/rate?doc_id=${doc_id}&visit_id=${visit_id}`;
       let rateBtn = `<a href="${url}" class="badge badge-secondary" style="pointer-events: none">Rate now</a>`;
       return rateBtn;
