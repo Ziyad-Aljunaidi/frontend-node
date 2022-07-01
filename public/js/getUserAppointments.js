@@ -94,6 +94,10 @@ function getPrescription(prescription) {
 async function updateAppointmentStatus(doc_id,user_id,visit_id,user_time,status_code,date_stamp,reason_code,fees,prescription,clinic_code){
   let response = await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/status_appointment?doc_id=${doc_id}&user_id=${user_id}&visit_id=${visit_id}&user_time=${user_time}&status_code=${status_code}&date_stamp=${date_stamp}&reason_code=${reason_code}&fees=${fees}&prescription=${prescription}&clinic_code=${clinic_code}`)
   let data = await response.json()
+  if(status_code == "5"){
+    await fetch(`https://us-central1-medica72-5933c.cloudfunctions.net/api/incrementflags?user_id=${user_id}`)
+  }
+  
   location.reload();
   return data
 }
@@ -110,6 +114,7 @@ function cancelAppointment(data){
      //"updateAppointmentStatus('${data.doc_id}','${data.user_id}','${data.visit_id}','${data.user_time}','5','${data.date_stamp}','${data.reason_code}','${data.fees}','${data.prescription}','${data.clinic}')"
 
   }
+  
 }
 
 function rateDoc(rate, rate_code, doc_id, visit_id) {
