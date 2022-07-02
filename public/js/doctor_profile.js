@@ -271,8 +271,21 @@ getDocData(doc_id).then( async (result) =>{
     //console.log(reserved_times)
     data = result
     doc_data = result
+    get_max_days = result.clinics[0].reserve_option
+    let max_date = new Date();
+
+    if(get_max_days == "0"){
+        max_date.setDate(max_date.getDate() + 7);
+
+    }else if(get_max_days == "1"){
+        max_date.setDate(max_date.getDate() + 30);
+    }else{
+        max_date.setDate(max_date.getDate() + 365);
+    }
+
     const datepicker = new Datepicker(elem, {
         // ...options
+        "maxDate": max_date,
         "daysOfWeekDisabled":days,
         "datesDisabled": disablePast(),
         "minDate": disablePast()[29]
